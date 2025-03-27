@@ -144,7 +144,7 @@ export default function Body() {
                                     {
                                         tokens.map((item, _i) => {
                                             return (
-                                                <li key={item.id} className="text-lg py-3 px-2 text-center hover:bg-zinc-400/10 flex gap-4 items-center justify-between" onClick={() => selectToken(`${item.name}`)}>
+                                                <li key={_i} className="text-lg py-3 px-2 text-center hover:bg-zinc-400/10 flex gap-4 items-center justify-between" onClick={() => selectToken(`${item.name}`)}>
                                                     <span className="flex items-center gap-4">
                                                         <Image src={item.token_image} alt="wallet-logo" height={300} width={300} className="h-[40px] w-[40px] rounded-full" />
                                                         <div className="text-start">
