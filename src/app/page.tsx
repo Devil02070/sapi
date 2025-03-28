@@ -1,6 +1,4 @@
-import SwapPage from "./swap/page";
+import { redirect } from "next/navigation";
 export default function Home() {
-  return (
-    <SwapPage />
-  );
+ redirect("/trade/swap")
 }

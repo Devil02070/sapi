@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Poppins } from "next/font/google";
-const font = Poppins({ subsets: ["latin"], weight: '400' })
+import {Syne_Mono } from "next/font/google";
+const font = Syne_Mono({ subsets: ["latin"], weight: '400' })
 
 import Header from "@/components/Header";
 

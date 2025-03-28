@@ -4,8 +4,8 @@
   --background: #17161B;
   /* --background: #000000; */
   --foreground: #ffffff;
-  --color1:#FEBF32;
-  --color2:#232532
+  --color1: #FEBF32;
+  --color2: #232532
 }
 
 /* @theme inline {
@@ -25,12 +25,20 @@ body {
   color: var(--foreground);
 }
 
-.bg-dark{background-color:var(--background)}
-.bg-primary{background-color:var(--color1)}
-.text-primary{color:var(--color1)}
+.bg-dark {
+  background-color: var(--background)
+}
 
-.btn-bg{
-  background-color:var(--color2)
+.bg-primary {
+  background-color: var(--color1)
+}
+
+.text-primary {
+  color: var(--color1)
+}
+
+.btn-bg {
+  background-color: var(--color2)
 }
 
 .text-grad {
@@ -39,10 +47,12 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+
 .modal-bg {
   backdrop-filter: blur(8px);
   background-color: #00000010;
 }
+
 .scrollbar-hidden::-webkit-scrollbar {
   display: none;
 }
@@ -51,8 +61,53 @@ body {
 .scrollbar-hidden {
   scrollbar-width: none;
 }
-.hover-bg:hover{
+
+.hover-bg:hover {
   background-color: var(--color1);
   color: #000000;
   transition: all 0.5s ease;
 }
+
+.hover-primary:hover {
+  color: var(--color1);
+  transition: all 0.5s ease;
+}
+
+.tab.active {
+  background-color: var(--color1);
+  color: var(--color-black);
+}
+
+
+/* Background Tokens */
+.floating-tokens {
+  opacity: 0.4;
+  filter: blur(4px);
+  animation: float 3.5s linear infinite;
+}
+
+.floating-tokens:hover {
+  opacity: 1;
+  cursor: pointer;
+  filter: blur(0px);
+  opacity: 1;
+  transform: rotate(10deg);
+  transition: all 0.3s ease;
+  animation: none;
+}
+
+@keyframes float {
+  0%{margin-top:0px;transform:rotate(0deg)}
+  25%{margin-top:8px;transform:rotate(8deg)}
+  50%{margin-top:0px;transform:rotate(0deg)}
+  75%{margin-top:-8px;transform:rotate(-8deg)}
+  100%{margin-top:0px;transform:rotate(0deg)}
+}
+.animate-bg .t1{animation-delay: 0s;}
+.animate-bg .t2{animation-delay: 0.5s;}
+.animate-bg .t3{animation-delay: 1s;}
+.animate-bg .t4{animation-delay: 1.2s;}
+.animate-bg .t5{animation-delay: 1.4s;}
+.animate-bg .t6{animation-delay: 1.6s;}
+.animate-bg .t7{animation-delay: 1.8s;}
+.animate-bg .t8{animation-delay: 2s;}

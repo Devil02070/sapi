@@ -203,5 +203,6 @@ export default function Aurora(props: AuroraProps) {
     };
   }, [amplitude]);
 
-  return <div ref={ctnDom} className="w-full h-fit rotate-180 absolute bottom-0"/>;
+  // return <div ref={ctnDom} className="w-full h-fit rotate-180 absolute bottom-0"/>;
+  return <div ref={ctnDom} className="w-full h-[80px] md:h-fit rotate-180 relative md:absolute bottom-0"/>;
 }

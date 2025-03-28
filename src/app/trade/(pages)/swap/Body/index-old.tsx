@@ -8,6 +8,7 @@ import Aurora from "@/components/ui/Aurora"
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from "react"
 import { IoIosSearch } from "react-icons/io"
+import { tokens } from '@/utils/constant'
 
 
 export default function Body() {
@@ -25,7 +26,6 @@ export default function Body() {
             setIsOpen(true)
         }
     }
-
     const selectToken = (token: string) => {
         if (currentfield == "from") {
             setFromToken(token)
@@ -35,38 +35,10 @@ export default function Body() {
             setIsOpen(false)
         }
     }
-    const tokens = [
-        {
-            id: 1,
-            name: 'MOVE',
-            token_image: '/media/movement.jpg',
-            full_name: 'Movement',
-            balance: 500
-        },
-        {
-            id: 2,
-            name: 'SUPRA',
-            token_image: '/media/movement.jpg',
-            full_name: 'Supra',
-            balance: 400
-        },
-        {
-            id: 3,
-            name: 'APT',
-            token_image: '/media/movement.jpg',
-            full_name: 'Aptos',
-            balance: 45
-        }, {
-            id: 4,
-            name: 'LGND',
-            token_image: '/media/movement.jpg',
-            full_name: 'Legend',
-            balance: 34567
-        }
-    ]
     return (
         <>
-            <section className="py-10 md:py-20">
+        <h1>Swap Page</h1>
+            <section className="py-10 md:py-20 hidden">
                 <div className="container m-auto px-5">
                     <div className="w-full md:w-[60%] lg:w-[40%] m-auto">
                         <div className="title flex justify-between items-center">
