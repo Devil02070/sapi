@@ -32,15 +32,14 @@ export default function TradeLayout({ children }: { children: React.ReactNode })
                         }
                     </div>
 
-                    <div className="row flex flex-wrap md:flex-nowrap gap-4 justify-center mt-4 z-50 relative">
-                        <div className="col w-full md:w-[30%] btn-bg rounded-2xl p-4 md:p-10 ">
+                    <div className="row flex flex-wrap md:flex-nowrap gap-4 justify-center mt-4">
+                        <div className="col w-full md:w-[30%] btn-bg rounded-2xl p-4 md:p-10 relative z-50">
                             {children}
                         </div>
 
                         <div className="col w-full md:w-[70%] hidden">
                             <div className="p-20 btn-bg rounded-2xl"></div>
                             <div className="p-20 btn-bg rounded-2xl mt-6 "></div>
-
                         </div>
                     </div>
                 </div>

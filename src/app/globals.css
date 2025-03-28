@@ -2,10 +2,16 @@
 
 :root {
   --background: #17161B;
-  /* --background: #000000; */
   --foreground: #ffffff;
   --color1: #FEBF32;
   --color2: #232532
+}
+
+[data-theme='light'] {
+  --background: #fffefa;
+  --foreground: #17161B;
+  --color1: #FEBF32;
+  --color2: #e6e6e6;
 }
 
 /* @theme inline {

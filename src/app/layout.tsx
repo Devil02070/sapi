@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import {Syne_Mono } from "next/font/google";
+import { Syne_Mono } from "next/font/google";
 const font = Syne_Mono({ subsets: ["latin"], weight: '400' })
 
 import Header from "@/components/Header";
+import { ThemeProvider } from 'next-themes'
 
 export const metadata: Metadata = {
   title: "SAPi",
@@ -15,10 +16,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${font.className} antialiased`} >
-        <Header/>
-        {children}
+        <ThemeProvider>
+          <Header />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
