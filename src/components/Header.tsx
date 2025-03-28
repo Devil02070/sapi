@@ -30,7 +30,7 @@ export default function Header() {
                         <div className="col  flex gap-2 md:gap-4">
                             <button className="text-primary text-sm md:text-base py-2 md:py-4 px-2 md:px-5 btn-bg rounded-lg">40.00 MOVE</button>
                             <button className="text-primary text-sm md:text-base py-2 md:py-4 px-2 md:px-5 btn-bg rounded-lg">0x345...5f3bd</button>
-                            <button className="text-primary text-sm md:text-lg py-2 md:py-4 px-2 md:px-5 btn-bg rounded-lg cursor-pointer" onClick={() => ToggleTheme}>
+                            <button className="text-primary text-sm md:text-lg py-2 md:py-4 px-2 md:px-5 btn-bg rounded-lg cursor-pointer" onClick={() => ToggleTheme()}>
                                 {
                                     theme == 'light' ?
                                         <MdOutlineLightMode />
