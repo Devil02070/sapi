@@ -4,7 +4,7 @@
   --background: #17161B;
   --foreground: #ffffff;
   --color1: #FEBF32;
-  --color2: #232532
+  --color2: #232532;
 }
 
 [data-theme='light'] {
@@ -45,6 +45,9 @@ body {
 
 .btn-bg {
   background-color: var(--color2)
+}
+.card-bg{
+  background-color:#23253250;
 }
 
 .text-grad {

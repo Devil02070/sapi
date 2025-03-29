@@ -2,7 +2,7 @@
 
 import Image from "next/image"
 import { IoCloseOutline, IoSettingsOutline } from "react-icons/io5"
-import { LuArrowDownUp } from "react-icons/lu"
+import { LuArrowDownUp, LuWallet } from "react-icons/lu"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from "react"
@@ -37,34 +37,31 @@ export default function Body() {
     return (
         <>
 
-            <div className="w-full">
-                <div className="title flex justify-between items-center">
-                    <h2 className="text-3xl text-grad">SWAP</h2>
-                    <div className="bg-black/40 p-2 px-4 rounded-4xl flex items-center gap-4">
-                        <span className="text-primary">0.5%</span>
-                        <IoSettingsOutline className="text-2xl cursor-pointer hover-primary" onClick={() => setSlippagemodal(true)} />
-                    </div>
+            <div className="w-full card-bg rounded-3xl p-1 relative z-50">
+                <div className="btn-bg p-1 px-3 rounded-4xl flex items-center ms-auto gap-4 absolute top-[-52px] right-0">
+                    <span className="text-primary">0.5%</span>
+                    <IoSettingsOutline className="text-xl cursor-pointer hover-primary" onClick={() => setSlippagemodal(true)} />
                 </div>
-                <div className="mt-4 md:mt-5 border border-zinc-700 p-4 rounded-lg">
-                    <p className="text-zinc-400 text-sm">You Pay</p>
+                <div className="bg-black/40 px-5 py-6 rounded-3xl">
+                    <p className="text-zinc-400 text-sm">You pay</p>
                     <div className="input-group flex items-center">
                         <div className="w-[50%]">
                             <input type="text" placeholder="0.0" className="py-2 text-3xl w-full focus:outline-none text-grad" />
                         </div>
                         <div className="flex gap-2 justify-end w-[50%]">
                             <button className="px-2 md:px-3 rounded text-primary cursor-pointer hover:opacity-70">Max</button>
-                            <button className="border border-zinc-700 rounded-lg p-3 relative flex items-center gap-2 cursor-pointer text-sm" onClick={() => ShowTokensModal('from')}>
+                            <button className="border border-zinc-700 rounded-4xl py-2 px-2 relative flex items-center gap-2 cursor-pointer text-sm" onClick={() => ShowTokensModal('from')}>
                                 <Image src="/media/movement.jpg" alt="token-image" height={100} width={100} className="h-[20px] w-[20px] rounded-full" />
                                 {fromToken}
                                 <span><MdKeyboardArrowDown className="" /></span>
                             </button>
                         </div>
                     </div>
-                    <p className="pt-1 text-xs text-zinc-400">Balance: 0.0</p>
+                    <p className="pt-1 text-xs text-zinc-400 flex gap-2 items-center justify-end"><LuWallet /> 0.0</p>
                 </div>
-                <LuArrowDownUp className="text-primary text-2xl md:text-3xl m-auto mt-2 cursor-pointer" />
-                <div className="mt-2 border border-zinc-700 p-4 rounded-lg">
-                    <p className="text-zinc-400 text-sm">You Receive</p>
+                <LuArrowDownUp className="text-primary text-2xl bg-black p-1 rounded m-auto cursor-pointer mt-[-10px] mb-[-10px] hover-bg relative z-10" />
+                <div className="bg-black/40 px-5 py-6 rounded-3xl">
+                    <p className="text-zinc-400 text-sm">You receive</p>
                     <div className="input-group flex items-center">
                         <div className="w-[50%]">
                             <input type="text" placeholder="0.0" className="py-2 text-3xl w-full focus:outline-none text-grad" />
@@ -73,7 +70,7 @@ export default function Body() {
 
                             {
                                 toToken == '' ?
-                                    <button className="rounded-lg p-3 text-xs md:text-sm cursor-pointer bg-primary text-black" onClick={() => ShowTokensModal('to')}>
+                                    <button className="rounded-4xl py-2 px-3 text-xs md:text-sm cursor-pointer bg-primary text-black" onClick={() => ShowTokensModal('to')}>
                                         Select Token
                                     </button>
                                     :
@@ -88,10 +85,10 @@ export default function Body() {
                             }
                         </div>
                     </div>
-                    <p className="pt-1 text-xs text-zinc-400">Balance: 0.0</p>
+                    <p className="pt-1 text-xs text-zinc-400 flex gap-2 items-center justify-end"><LuWallet /> 0.0</p>
                 </div>
 
-                <button className="rounded-lg p-4 text-xl cursor-pointer bg-primary text-black w-full mt-6" onClick={() => ShowTokensModal('to')}>
+                <button className="rounded-3xl bg-black p-4 text-xl cursor-pointer w-full mt-3" onClick={() => ShowTokensModal('to')}>
                     Swap
                 </button>
             </div>

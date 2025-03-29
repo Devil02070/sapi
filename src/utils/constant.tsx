@@ -1,3 +1,18 @@
+export const paths = [
+    {
+        name: "Swap",
+        to: "swap"
+    },
+    {
+        name: "Limit",
+        to: "limit"
+    },
+    {
+        name: "Dca",
+        to: "dca"
+    }
+]
+
 export const tokens = [
     {
         id: 1,
@@ -27,3 +42,4 @@ export const tokens = [
         balance: 34567
     }
 ]
+
