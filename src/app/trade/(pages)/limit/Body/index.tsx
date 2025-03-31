@@ -18,6 +18,7 @@ export default function Body() {
     const [fromToken, setFromToken] = useState('MOVE')
     const [toToken, setToToken] = useState('')
     const [limittime, setLimitTime] = useState(false)
+    const [orderDetails, setOrderDetails] = useState(false)
     const ShowTokensModal = (modaltype: string) => {
         if (modaltype == "from") {
             setcurrentfield('from')
@@ -100,7 +101,7 @@ export default function Body() {
                                 <input type="text" placeholder="0.0" className="py-2 text-xl w-full focus:outline-none text-grad" />
                             </div>
                             <div className="flex gap-2 justify-end w-[25%]">
-                                <button className="bg-black/50 rounded p-1 hover-bg relative flex items-center gap-2 cursor-pointer text-[10px]" onClick={() => ShowTokensModal('from')}>
+                                <button className="bg-black/50 rounded p-1 hover-bg relative flex items-center gap-2 cursor-pointer text-[10px]">
                                     {fromToken}
                                     <span><FaArrowRightArrowLeft className="" /></span>
                                 </button>
@@ -119,7 +120,7 @@ export default function Body() {
                                     <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">1 Hour</li>
                                     <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">1 Day</li>
                                     <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">3 Days</li>
-                                    <li className=" rounded-xl py-2 px-3 mt-1 active card-bg border border-zinc-700/50">5 Days</li>
+                                    <li className="rounded-xl py-2 px-3 mt-1 active card-bg border border-zinc-700/50">5 Days</li>
                                     <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">30 Days</li>
                                     <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">90 Days</li>
                                     <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">Custom</li>
@@ -130,17 +131,19 @@ export default function Body() {
                     </div>
                 </div>
 
-                <button className="rounded-2xl bg-black p-4 text-xl cursor-pointer w-full mt-3" onClick={() => ShowTokensModal('to')}>
+                <button className="rounded-2xl bg-black p-4 text-xl cursor-pointer w-full mt-3">
                     Connect Wallet
                 </button>
 
-                <div className="bg-black/40 px-4 py-4 rounded-3xl mt-2">
-                    <p className="text-zinc-400 text-sm flex items-center justify-between md:hidden">
+                <div className="bg-black/40 rounded-3xl mt-2 overflow-hidden">
+                    <p className={`text-zinc-400 text-sm items-center justify-between cursor-pointer p-4 ${orderDetails ? 'hidden' : 'flex'}`} onClick={() => setOrderDetails(!orderDetails)}>
                         <span>1 SUI = 2.38 wUSDT</span>
-                        <span><MdKeyboardArrowDown /></span>
+                        <span><MdKeyboardArrowDown className="text-xl" /></span>
                     </p>
-                    <div className="">
-                        <h4 className="flex items-center justify-between"><span>Order Details</span> <IoIosArrowUp /></h4>
+                    <div className={`${orderDetails ? '' : 'hidden'} p-4`}>
+                        <h4 className="flex items-center justify-between cursor-pointer" onClick={() => setOrderDetails(!orderDetails)}>
+                            <span>Order Details</span> <IoIosArrowUp />
+                        </h4>
                         <div className="bg-black/80 py-5 px-3 rounded-xl mt-3">
                             <p className="text-zinc-400 text-sm flex items-center justify-between">
                                 <span>Price</span>
