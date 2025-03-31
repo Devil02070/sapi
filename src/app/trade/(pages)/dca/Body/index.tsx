@@ -96,7 +96,12 @@ export default function Body() {
                         <h3 className="text-lg flex items-center justify-between pt-2" ><span>5 Days</span><MdKeyboardArrowDown /></h3>
                         {
                             limittime &&
-                            <div className="dropdown p-1 border border-zinc-700/50 rounded-xl bg-black absolute right-[-40px] bottom-0 z-50">
+                            <motion.div
+                                initial={{ opacity: 0 }}
+                                animate={{ opacity: 1 }}
+                                transition={{ duration: 0.5, ease: "ease" }}
+                                className="dropdown p-1 border border-zinc-700/50 rounded-xl bg-black absolute top-30 z-50"
+                            >
                                 <ul className="w-[150px] text-sm">
                                     <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90">15 Minutes</li>
                                     <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">1 Hour</li>
@@ -107,7 +112,7 @@ export default function Body() {
                                     <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">90 Days</li>
                                     <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">Custom</li>
                                 </ul>
-                            </div>
+                            </motion.div>
                         }
                     </div>
                     <div className="bg-black/40 p-5 rounded-3xl w-[50%] border border-transparent hover:border-zinc-700">

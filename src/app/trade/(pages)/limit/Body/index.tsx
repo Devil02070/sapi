@@ -112,22 +112,27 @@ export default function Body() {
                     <div className="bg-black/40 p-5 rounded-3xl w-[40%] border border-transparent hover:border-zinc-700 cursor-pointer relative" onClick={() => setLimitTime(!limittime)}>
                         <p className="text-zinc-400 text-xs">Expired</p>
                         <h3 className="text-xl flex items-center justify-between pt-6" ><span>5 Days</span><MdKeyboardArrowDown /></h3>
-                        {
-                            limittime &&
-                            <div className="dropdown p-1 border border-zinc-700/50 rounded-xl bg-black absolute right-[-40px] bottom-0 z-50">
-                                <ul className="w-[150px] text-sm">
-                                    <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90">10 Minutes</li>
-                                    <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">1 Hour</li>
-                                    <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">1 Day</li>
-                                    <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">3 Days</li>
-                                    <li className="rounded-xl py-2 px-3 mt-1 active card-bg border border-zinc-700/50">5 Days</li>
-                                    <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">30 Days</li>
-                                    <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">90 Days</li>
-                                    <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">Custom</li>
-                                </ul>
-                            </div>
-                        }
-
+                            {
+                                limittime && (
+                                    <motion.div
+                                        initial={{ opacity: 0 }}
+                                        animate={{ opacity: 1 }}
+                                        transition={{ duration: 0.5, ease: "ease" }}
+                                        className="dropdown p-1 border border-zinc-700/50 rounded-xl bg-black absolute top-30 z-50"
+                                    >
+                                        <ul className="w-[150px] text-sm">
+                                            <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90">10 Minutes</li>
+                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">1 Hour</li>
+                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">1 Day</li>
+                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">3 Days</li>
+                                            <li className="rounded-xl py-2 px-3 mt-1 active card-bg border border-zinc-700/50">5 Days</li>
+                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">30 Days</li>
+                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">90 Days</li>
+                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">Custom</li>
+                                        </ul>
+                                    </motion.div>
+                                )
+                            }
                     </div>
                 </div>
 
