@@ -49,6 +49,9 @@ body {
 .card-bg{
   background-color:#23253250;
 }
+.bg-color1{
+  background-color:#17161B;
+}
 
 .text-grad {
   background: linear-gradient(to bottom right, #1ea59a, #d1d358, #2d82e4);
