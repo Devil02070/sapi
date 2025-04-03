@@ -1,7 +1,6 @@
 'use client'
-
 import Image from "next/image"
-import { IoCloseOutline, IoSettingsOutline } from "react-icons/io5"
+import { IoCloseOutline } from "react-icons/io5"
 import { LuArrowDownUp, LuWallet } from "react-icons/lu"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import { motion, AnimatePresence } from 'framer-motion'
@@ -13,7 +12,6 @@ import { FaArrowRightArrowLeft } from "react-icons/fa6"
 
 export default function Body() {
     const [isOpen, setIsOpen] = useState(false)
-    const [slippagemodal, setSlippagemodal] = useState(false);
     const [currentfield, setcurrentfield] = useState('')
     const [fromToken, setFromToken] = useState('MOVE')
     const [toToken, setToToken] = useState('')
@@ -41,10 +39,6 @@ export default function Body() {
         <>
 
             <div className="w-full card-bg rounded-3xl p-1 relative z-50">
-                <div className="btn-bg p-1 px-3 rounded-4xl flex items-center ms-auto gap-4 absolute top-[-52px] right-0">
-                    <span className="text-primary">0.5%</span>
-                    <IoSettingsOutline className="text-xl cursor-pointer hover-primary" onClick={() => setSlippagemodal(true)} />
-                </div>
                 <div className="bg-black/40 px-5 py-6 rounded-3xl border border-transparent hover:border-zinc-700">
                     <p className="text-zinc-400 text-sm">You pay</p>
                     <div className="input-group flex items-center">
@@ -109,30 +103,32 @@ export default function Body() {
                         </div>
                         <p className="pt-1 text-xs text-zinc-400">= $0.0234</p>
                     </div>
-                    <div className="bg-black/40 p-5 rounded-3xl w-[40%] border border-transparent hover:border-zinc-700 cursor-pointer relative" onClick={() => setLimitTime(!limittime)}>
-                        <p className="text-zinc-400 text-xs">Expired</p>
-                        <h3 className="text-xl flex items-center justify-between pt-6" ><span>5 Days</span><MdKeyboardArrowDown /></h3>
-                            {
-                                limittime && (
-                                    <motion.div
-                                        initial={{ opacity: 0 }}
-                                        animate={{ opacity: 1 }}
-                                        transition={{ duration: 0.5, ease: "ease" }}
-                                        className="dropdown p-1 border border-zinc-700/50 rounded-xl bg-black absolute top-30 z-50"
-                                    >
-                                        <ul className="w-[150px] text-sm">
-                                            <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90">10 Minutes</li>
-                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">1 Hour</li>
-                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">1 Day</li>
-                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">3 Days</li>
-                                            <li className="rounded-xl py-2 px-3 mt-1 active card-bg border border-zinc-700/50">5 Days</li>
-                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">30 Days</li>
-                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">90 Days</li>
-                                            <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90">Custom</li>
-                                        </ul>
-                                    </motion.div>
-                                )
-                            }
+                    <div className="bg-black/40  rounded-3xl w-[40%] border border-transparent hover:border-zinc-700 cursor-pointer relative">
+                        <div className="p-5" onClick={() => setLimitTime(!limittime)}>
+                            <p className="text-zinc-400 text-xs">Expired</p>
+                            <h3 className="text-xl flex items-center justify-between pt-6" ><span>5 Days</span><MdKeyboardArrowDown /></h3>
+                        </div>
+                        {
+                            limittime && (
+                                <motion.div
+                                    initial={{ opacity: 0 }}
+                                    animate={{ opacity: 1 }}
+                                    transition={{ duration: 0.5, ease: "ease" }}
+                                    className="dropdown p-1 border border-zinc-700/50 rounded-xl bg-black absolute top-30 z-50"
+                                >
+                                    <ul className="w-[150px] text-sm">
+                                        <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>10 Minutes</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>1 Hour</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>1 Day</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>3 Days</li>
+                                        <li className="rounded-xl py-2 px-3 mt-1 active card-bg border border-zinc-700/50" onClick={() => setLimitTime(!limittime)}>5 Days</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>30 Days</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>90 Days</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>Custom</li>
+                                    </ul>
+                                </motion.div>
+                            )
+                        }
                     </div>
                 </div>
 
@@ -181,30 +177,30 @@ export default function Body() {
             {/* Tokens Modals */}
             <AnimatePresence>
                 {isOpen && (
-                    <div className="fixed top-0 right-0 left-0 bottom-0 z-50 flex items-center justify-center px-5 modal-bg">
+                    <div className="fixed top-0 right-0 left-0 bottom-0 z-60 flex items-center justify-center px-5 modal-bg">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, ease: "ease" }}
-                            className="py-8 sm:p-10 rounded-2xl bg-black/90 relative w-full md:w-[70%] lg:w-[50%] xl:w-[40%] 2xl:w-[30%]"
+                            className="p-6 rounded-3xl btn-bg relative w-full md:w-[70%] lg:w-[50%] xl:w-[30%] 2xl:w-[25%]"
                         >
                             <div className="title">
                                 <h2 className="text-2xl lg:text-3xl text-center text-grad">Select Token</h2>
                             </div>
-                            <div className="content mt-8 sm:mt-10">
+                            <div className="content mt-6">
                                 <div className="search flex items-center relative px-2 md:px-0">
                                     <IoIosSearch className="absolute left-4 text-primary text-xl" />
-                                    <input type="search" placeholder="Search name or paste address" className="w-full border border-zinc-700 rounded p-4 ps-13 text-sm focus:outline-none" />
+                                    <input type="search" placeholder="Search name or paste address" className="w-full border rounded-3xl border-zinc-700 p-4 ps-13 text-sm focus:outline-none" />
                                 </div>
-                                <ul className="max-h-[50vh] overflow-auto scrollbar-hidden mt-4">
+                                <ul className="max-h-[50vh] overflow-auto mt-4 flex flex-col gap-1 scrollbar">
                                     {
                                         tokens.map((item, _i) => {
                                             return (
-                                                <li key={_i} className="text-lg py-3 px-2 text-center hover:bg-zinc-400/10 flex gap-4 items-center justify-between" onClick={() => selectToken(`${item.name}`)}>
+                                                <li key={_i} className="text-lg p-2 bg-black/40 rounded-2xl hover:bg-zinc-400/10 flex gap-4 items-center justify-between cursor-pointer" onClick={() => selectToken(`${item.name}`)}>
                                                     <span className="flex items-center gap-4">
-                                                        <Image src={item.token_image} alt="wallet-logo" height={300} width={300} className="h-[40px] w-[40px] rounded-full" />
+                                                        <Image src={item.token_image} alt="wallet-logo" height={300} width={300} className="h-[32px] w-[32px] rounded-full" />
                                                         <div className="text-start">
-                                                            <p className="text-zinc-200">{item.name}</p>
+                                                            <p className="text-zinc-200 text-sm">{item.name}</p>
                                                             <p className="text-xs text-zinc-400">{item.full_name}</p>
                                                         </div>
                                                     </span>
@@ -216,37 +212,6 @@ export default function Body() {
                                 </ul>
                             </div>
                             <button onClick={() => setIsOpen(false)} className="absolute top-5 right-5 cursor-pointer text-3xl"><IoCloseOutline />
-                            </button>
-                        </motion.div>
-                    </div>
-                )}
-            </AnimatePresence>
-
-            {/* Slippage Modal */}
-            <AnimatePresence>
-                {slippagemodal && (
-                    <div className="fixed top-0 right-0 left-0 bottom-0 z-50 flex items-center justify-center px-5 modal-bg">
-                        <motion.div
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ duration: 0.5, ease: "ease" }}
-                            className="py-8 sm:p-10 rounded-2xl bg-black relative w-full md:w-[70%] lg:w-[50%] xl:w-[40%] 2xl:w-[30%]"
-                        >
-                            <div className="title">
-                                <h2 className="text-2xl lg:text-3xl text-center text-grad">
-                                    Transaction Setting
-                                </h2>
-                            </div>
-                            <div className="content mt-8 sm:mt-10 px-4 md:px-0">
-                                <p>Slippage tolerance</p>
-                                <div className="flex flex-wrap md:flex-nowrap gap-3 items-center mt-2">
-                                    <span className="py-3 px-7 rounded-4xl bg-dark text-primary hover-bg cursor-pointer">0.1%</span>
-                                    <span className="py-3 px-7 rounded-4xl bg-dark text-primary hover-bg cursor-pointer">0.5%</span>
-                                    <span className="py-3 px-7 rounded-4xl bg-dark text-primary hover-bg cursor-pointer">1.0%</span>
-                                    <input type="text" placeholder="custom (0.08%)" className="w-full border border-zinc-700 rounded p-4 text-sm focus:outline-none" />
-                                </div>
-                            </div>
-                            <button onClick={() => setSlippagemodal(false)} className="absolute top-5 right-5 cursor-pointer text-3xl"><IoCloseOutline />
                             </button>
                         </motion.div>
                     </div>

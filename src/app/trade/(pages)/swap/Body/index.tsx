@@ -1,7 +1,7 @@
 'use client'
 
 import Image from "next/image"
-import { IoCloseOutline} from "react-icons/io5"
+import { IoCloseOutline } from "react-icons/io5"
 import { LuArrowDownUp, LuWallet } from "react-icons/lu"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import { motion, AnimatePresence } from 'framer-motion'
@@ -91,30 +91,30 @@ export default function Body() {
             {/* Tokens Modals */}
             <AnimatePresence>
                 {isOpen && (
-                    <div className="fixed top-0 right-0 left-0 bottom-0 z-50 flex items-center justify-center px-5 modal-bg">
+                    <div className="fixed top-0 right-0 left-0 bottom-0 z-60 flex items-center justify-center px-5 modal-bg">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, ease: "ease" }}
-                            className="py-8 sm:p-10 rounded-2xl bg-black/90 relative w-full md:w-[70%] lg:w-[50%] xl:w-[40%] 2xl:w-[30%]"
+                            className="p-4 md:p-6 rounded-2xl btn-bg relative w-full md:w-[70%] lg:w-[50%] xl:w-[30%] 2xl:w-[25%]"
                         >
                             <div className="title">
                                 <h2 className="text-2xl lg:text-3xl text-center text-grad">Select Token</h2>
                             </div>
-                            <div className="content mt-8 sm:mt-10">
+                            <div className="content mt-6">
                                 <div className="search flex items-center relative px-2 md:px-0">
                                     <IoIosSearch className="absolute left-4 text-primary text-xl" />
-                                    <input type="search" placeholder="Search name or paste address" className="w-full border border-zinc-700 rounded p-4 ps-13 text-sm focus:outline-none" />
+                                    <input type="search" placeholder="Search name or paste address" className="w-full border rounded-3xl border-zinc-700 p-4 ps-13 text-sm focus:outline-none" />
                                 </div>
-                                <ul className="max-h-[50vh] overflow-auto scrollbar-hidden mt-4">
+                                <ul className="max-h-[50vh] overflow-auto mt-4 flex flex-col gap-1 scrollbar">
                                     {
                                         tokens.map((item, _i) => {
                                             return (
-                                                <li key={_i} className="text-lg py-3 px-2 text-center hover:bg-zinc-400/10 flex gap-4 items-center justify-between" onClick={() => selectToken(`${item.name}`)}>
+                                                <li key={_i} className="text-lg p-2 bg-black/40 rounded-2xl hover:bg-zinc-400/10 flex gap-4 items-center justify-between cursor-pointer" onClick={() => selectToken(`${item.name}`)}>
                                                     <span className="flex items-center gap-4">
-                                                        <Image src={item.token_image} alt="wallet-logo" height={300} width={300} className="h-[40px] w-[40px] rounded-full" />
+                                                        <Image src={item.token_image} alt="wallet-logo" height={300} width={300} className="h-[32px] w-[32px] rounded-full" />
                                                         <div className="text-start">
-                                                            <p className="text-zinc-200">{item.name}</p>
+                                                            <p className="text-zinc-200 text-sm">{item.name}</p>
                                                             <p className="text-xs text-zinc-400">{item.full_name}</p>
                                                         </div>
                                                     </span>
@@ -125,7 +125,7 @@ export default function Body() {
                                     }
                                 </ul>
                             </div>
-                            <button onClick={() => setIsOpen(false)} className="absolute top-5 right-5 cursor-pointer text-3xl"><IoCloseOutline />
+                            <button onClick={() => setIsOpen(false)} className="absolute top-4 md:top-5 right-4 md:right-5 cursor-pointer text-3xl"><IoCloseOutline />
                             </button>
                         </motion.div>
                     </div>

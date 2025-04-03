@@ -46,11 +46,13 @@ body {
 .btn-bg {
   background-color: var(--color2)
 }
-.card-bg{
-  background-color:#23253250;
+
+.card-bg {
+  background-color: #23253250;
 }
-.bg-color1{
-  background-color:#17161B;
+
+.bg-color1 {
+  background-color: #17161B;
 }
 
 .text-grad {
@@ -61,8 +63,15 @@ body {
 }
 
 .modal-bg {
-  backdrop-filter: blur(8px);
-  background-color: #00000010;
+  /* backdrop-filter: blur(8px);
+  background-color: #00000010; */
+  backdrop-filter: unset;
+  background-color: #000000aa;
+}
+
+.modal-bg.orders {
+  backdrop-filter: unset;
+  background-color: #000000aa;
 }
 
 .scrollbar-hidden::-webkit-scrollbar {
@@ -109,17 +118,96 @@ body {
 }
 
 @keyframes float {
-  0%{margin-top:0px;transform:rotate(0deg)}
-  25%{margin-top:8px;transform:rotate(8deg)}
-  50%{margin-top:0px;transform:rotate(0deg)}
-  75%{margin-top:-8px;transform:rotate(-8deg)}
-  100%{margin-top:0px;transform:rotate(0deg)}
+  0% {
+    margin-top: 0px;
+    transform: rotate(0deg)
+  }
+
+  25% {
+    margin-top: 8px;
+    transform: rotate(8deg)
+  }
+
+  50% {
+    margin-top: 0px;
+    transform: rotate(0deg)
+  }
+
+  75% {
+    margin-top: -8px;
+    transform: rotate(-8deg)
+  }
+
+  100% {
+    margin-top: 0px;
+    transform: rotate(0deg)
+  }
 }
-.animate-bg .t1{animation-delay: 0s;}
-.animate-bg .t2{animation-delay: 0.5s;}
-.animate-bg .t3{animation-delay: 1s;}
-.animate-bg .t4{animation-delay: 1.2s;}
-.animate-bg .t5{animation-delay: 1.4s;}
-.animate-bg .t6{animation-delay: 1.6s;}
-.animate-bg .t7{animation-delay: 1.8s;}
-.animate-bg .t8{animation-delay: 2s;}
+
+.animate-bg .t1 {
+  animation-delay: 0s;
+}
+
+.animate-bg .t2 {
+  animation-delay: 0.5s;
+}
+
+.animate-bg .t3 {
+  animation-delay: 1s;
+}
+
+.animate-bg .t4 {
+  animation-delay: 1.2s;
+}
+
+.animate-bg .t5 {
+  animation-delay: 1.4s;
+}
+
+.animate-bg .t6 {
+  animation-delay: 1.6s;
+}
+
+.animate-bg .t7 {
+  animation-delay: 1.8s;
+}
+
+.animate-bg .t8 {
+  animation-delay: 2s;
+}
+
+
+
+/* Scrollbar */
+.scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #febd32da;
+  border-radius: 16px;
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #FEBF32;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  background: #febd320c;
+  border-radius: 16px;
+}
+.scrollbar::-webkit-scrollbar-button {
+  display: none;
+}
+
+.scrollbar {
+  scrollbar-width: thin; 
+  scrollbar-color: #febd32da #febd320c; 
+}
+.scrollbar * {
+  scrollbar-width: thin;
+}
+.scrollbar::-moz-scrollbar-button {
+  display: none !important;
+}
+
+
