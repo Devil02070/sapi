@@ -8,9 +8,11 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from "react"
 import { IoIosSearch } from "react-icons/io"
 import { tokens } from '@/utils/constant'
+import { useWallet } from "@aptos-labs/wallet-adapter-react"
 
 
 export default function Body() {
+    const { connected } = useWallet();
     const [isOpen, setIsOpen] = useState(false)
     const [currentfield, setcurrentfield] = useState('')
     const [fromToken, setFromToken] = useState('MOVE')
@@ -33,9 +35,12 @@ export default function Body() {
             setIsOpen(false)
         }
     }
+    const ModifyTokenOrder = () => {
+        setFromToken(toToken)
+        setToToken(fromToken)
+    }
     return (
         <>
-
             <div className="w-full card-bg rounded-3xl p-1 relative z-50">
                 <div className="bg-black/40 px-5 py-6 rounded-3xl">
                     <p className="text-zinc-400 text-sm">You pay</p>
@@ -54,7 +59,7 @@ export default function Body() {
                     </div>
                     <p className="pt-1 text-xs text-zinc-400 flex gap-2 items-center justify-end"><LuWallet /> 0.0</p>
                 </div>
-                <LuArrowDownUp className="text-primary text-2xl bg-black p-1 rounded m-auto cursor-pointer mt-[-10px] mb-[-10px] hover-bg relative z-10" />
+                <LuArrowDownUp className="text-primary text-2xl bg-black p-1 rounded m-auto cursor-pointer mt-[-10px] mb-[-10px] hover-bg relative z-10" onClick={() => ModifyTokenOrder()} />
                 <div className="bg-black/40 px-5 py-6 rounded-3xl">
                     <p className="text-zinc-400 text-sm">You receive</p>
                     <div className="input-group flex items-center">
@@ -62,7 +67,6 @@ export default function Body() {
                             <input type="text" placeholder="0.0" className="py-2 text-3xl w-full focus:outline-none text-grad" />
                         </div>
                         <div className="flex gap-2 justify-end w-[50%]">
-
                             {
                                 toToken == '' ?
                                     <button className="rounded-4xl py-2 px-3 text-xs md:text-sm cursor-pointer bg-primary text-black" onClick={() => ShowTokensModal('to')}>
@@ -83,9 +87,12 @@ export default function Body() {
                     <p className="pt-1 text-xs text-zinc-400 flex gap-2 items-center justify-end"><LuWallet /> 0.0</p>
                 </div>
 
-                <button className="rounded-3xl bg-black p-4 text-xl cursor-pointer w-full mt-3" onClick={() => ShowTokensModal('to')}>
-                    Swap
-                </button>
+                {
+                    connected ?
+                        <button className="rounded-3xl bg-black p-4 text-xl cursor-pointer w-full mt-3">Swap</button>
+                        :
+                        <button className="rounded-3xl bg-black p-4 text-xl cursor-pointer w-full mt-3">Connect Wallet</button>
+                }
             </div>
 
             {/* Tokens Modals */}
