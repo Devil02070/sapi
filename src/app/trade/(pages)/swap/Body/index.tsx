@@ -17,6 +17,8 @@ export default function Body() {
     const [currentfield, setcurrentfield] = useState('')
     const [fromToken, setFromToken] = useState('MOVE')
     const [toToken, setToToken] = useState('')
+    const [fromAmount, setFromAmount] = useState("");
+    const [toAmount, setToAmount] = useState("");
     const ShowTokensModal = (modaltype: string) => {
         if (modaltype == "from") {
             setcurrentfield('from')
@@ -46,7 +48,7 @@ export default function Body() {
                     <p className="text-zinc-400 text-sm">You pay</p>
                     <div className="input-group flex items-center">
                         <div className="w-[50%]">
-                            <input type="text" placeholder="0.0" className="py-2 text-3xl w-full focus:outline-none text-grad" />
+                            <input type="text" placeholder="0.0" value={fromAmount} onChange={(e)=>setFromAmount(e.target.value)} className="py-2 text-3xl w-full focus:outline-none text-grad" />
                         </div>
                         <div className="flex gap-2 justify-end w-[50%]">
                             <button className="px-2 md:px-3 rounded text-primary cursor-pointer hover:opacity-70">Max</button>
@@ -57,7 +59,7 @@ export default function Body() {
                             </button>
                         </div>
                     </div>
-                    <p className="pt-1 text-xs text-zinc-400 flex gap-2 items-center justify-end"><LuWallet /> 0.0</p>
+                    <p className="pt-1 text-xs text-zinc-400 flex gap-2 items-center justify-end"><LuWallet />0.0</p>
                 </div>
                 <LuArrowDownUp className="text-primary text-2xl bg-black p-1 rounded m-auto cursor-pointer mt-[-10px] mb-[-10px] hover-bg relative z-10" onClick={() => ModifyTokenOrder()} />
                 <div className="bg-black/40 px-5 py-6 rounded-3xl">

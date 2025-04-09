@@ -10,7 +10,7 @@ export function AptosWalletProvider({ children }: { children: React.ReactNode })
         // <AptosWalletAdapterProvider autoConnect={chain === "aptos"} dappConfig={{
         <AptosWalletAdapterProvider dappConfig={{
             // network: NetworkToNetworkName[aptosNetwork],
-            network: NetworkToNetworkName['testnet'],
+            network: NetworkToNetworkName['devnet'],
         }}>
             {children}
         </AptosWalletAdapterProvider>

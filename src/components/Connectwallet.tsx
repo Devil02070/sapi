@@ -7,11 +7,20 @@ import { useWallet, WalletReadyState } from "@aptos-labs/wallet-adapter-react";
 import { useEffect } from "react";
 import Link from 'next/link';
 import { toast } from 'react-toastify'
+import { useAptosClient } from '@/utils/aptosClient';
+
+type CoinStore = {
+  coin: {
+    value: string;
+  };
+};
 
 export default function ConnectWallet() {
-  const { wallets, connect, account, disconnect, connected } = useWallet();
+  const { wallets, connect, account, disconnect, connected, network } = useWallet();
   const [walletmodal, setWalletModal] = useState(false);
   const [isloading, setIsloading] = useState(false);
+  const [balance, setBalance] = useState<number | null>(null);
+  const aptosClient = useAptosClient();
 
   const connectWallet = async (walletName: string) => {
     setIsloading(true)
@@ -32,6 +41,31 @@ export default function ConnectWallet() {
     localStorage.removeItem("walletName");
   };
 
+  // -----------------------------
+  // Display Apt Wallet Balance
+  // -----------------------------
+  const getAptBalance = async (address: string): Promise<number> => {
+    try {
+      const resource = await aptosClient.getAccountResource(
+        address,
+        "0x1::coin::CoinStore<0x1::aptos_coin::AptosCoin>"
+      );
+      const coinData = resource.data as CoinStore;
+      const raw = coinData.coin.value;
+      return Number(raw) / 1e8;
+    } catch (error) {
+      console.error("Failed to fetch balance:", error);
+      return 0;
+    }
+  };
+  useEffect(() => {
+    if (account?.address) {
+      getAptBalance(account.address.toString()).then(setBalance);
+      // console.log("Connected network:", network?.name);
+    }
+  }, [account?.address, aptosClient, network?.name]);
+
+  // Auto connect wallet on refresh
   useEffect(() => {
     const savedWallet = localStorage.getItem("walletName");
     if (savedWallet) {
@@ -41,13 +75,14 @@ export default function ConnectWallet() {
       }
     }
   }, [wallets]);
+
   return (
     <>
       {!connected ?
         <button className="bg-primary text-black text-sm py-1 px-3 rounded-4xl cursor-pointer font-bold" onClick={() => setWalletModal(!walletmodal)}>Connect Wallet</button>
         :
         <>
-          <button className="btn-bg text-primary text-sm py-1 px-3 rounded-xl cursor-pointer" >4.50 APT</button>
+          <button className="btn-bg text-primary text-sm py-1 px-3 rounded-xl cursor-pointer" >{balance} APT</button>
           <button className="btn-bg text-primary text-sm py-1 px-3 rounded-xl cursor-pointer" >{account?.address.toString().slice(0, 4)}...{account?.address.toString().slice(-4)}</button>
           <button className="bg-primary text-black text-sm py-1 px-3 rounded-4xl cursor-pointer" onClick={() => disconnectWallet()}>Disconnect</button>
         </>
