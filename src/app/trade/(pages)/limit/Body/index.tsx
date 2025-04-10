@@ -39,7 +39,7 @@ export default function Body() {
         <>
 
             <div className="w-full card-bg rounded-3xl p-1 relative z-50">
-                <div className="bg-black/40 px-5 py-6 rounded-3xl border border-transparent hover:border-zinc-700">
+                <div className="field-bg px-5 py-6 rounded-3xl border border-transparent hover:border-white/20">
                     <p className="text-zinc-400 text-sm">You pay</p>
                     <div className="input-group flex items-center">
                         <div className="w-[50%]">
@@ -57,7 +57,7 @@ export default function Body() {
                     <p className="pt-1 text-xs text-zinc-400 flex gap-2 items-center justify-end"><LuWallet /> 0.0</p>
                 </div>
                 <LuArrowDownUp className="text-primary text-2xl bg-black p-1 rounded m-auto cursor-pointer mt-[-10px] mb-[-10px] hover-bg relative z-10" />
-                <div className="bg-black/40 px-5 py-6 rounded-3xl">
+                <div className="field-bg px-5 py-6 rounded-3xl">
                     <p className="text-zinc-400 text-sm">You receive</p>
                     <div className="input-group flex items-center">
                         <div className="w-[50%]">
@@ -85,7 +85,7 @@ export default function Body() {
                     <p className="pt-1 text-xs text-zinc-400 flex gap-2 items-center justify-end"><LuWallet /> 0.0</p>
                 </div>
                 <div className="flex gap-1 mt-1">
-                    <div className="bg-black/40 p-5 rounded-3xl w-[60%] border border-transparent hover:border-zinc-700">
+                    <div className="field-bg p-5 rounded-3xl w-[60%] border border-transparent hover:border-white/20">
                         <p className="text-zinc-400 text-xs flex justify-between">
                             <span>Buy move at rate</span>
                             <span className="text-primary">Use market</span>
@@ -103,7 +103,7 @@ export default function Body() {
                         </div>
                         <p className="pt-1 text-xs text-zinc-400">= $0.0234</p>
                     </div>
-                    <div className="bg-black/40  rounded-3xl w-[40%] border border-transparent hover:border-zinc-700 cursor-pointer relative">
+                    <div className="field-bg  rounded-3xl w-[40%] border border-transparent hover:border-white/20 cursor-pointer relative">
                         <div className="p-5" onClick={() => setLimitTime(!limittime)}>
                             <p className="text-zinc-400 text-xs">Expired</p>
                             <h3 className="text-xl flex items-center justify-between pt-6" ><span>5 Days</span><MdKeyboardArrowDown /></h3>
@@ -117,14 +117,14 @@ export default function Body() {
                                     className="dropdown p-1 border border-zinc-700/50 rounded-xl bg-black absolute top-30 z-50"
                                 >
                                     <ul className="w-[150px] text-sm">
-                                        <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>10 Minutes</li>
-                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>1 Hour</li>
-                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>1 Day</li>
-                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>3 Days</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-70" onClick={() => setLimitTime(!limittime)}>10 Minutes</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-70" onClick={() => setLimitTime(!limittime)}>1 Hour</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-70" onClick={() => setLimitTime(!limittime)}>1 Day</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-70" onClick={() => setLimitTime(!limittime)}>3 Days</li>
                                         <li className="rounded-xl py-2 px-3 mt-1 active card-bg border border-zinc-700/50" onClick={() => setLimitTime(!limittime)}>5 Days</li>
-                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>30 Days</li>
-                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>90 Days</li>
-                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-90" onClick={() => setLimitTime(!limittime)}>Custom</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-70" onClick={() => setLimitTime(!limittime)}>30 Days</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-70" onClick={() => setLimitTime(!limittime)}>90 Days</li>
+                                        <li className="btn-bg rounded-xl py-2 px-3 mt-1 hover:opacity-70" onClick={() => setLimitTime(!limittime)}>Custom</li>
                                     </ul>
                                 </motion.div>
                             )
@@ -132,11 +132,11 @@ export default function Body() {
                     </div>
                 </div>
 
-                <button className="rounded-2xl bg-black p-4 text-xl cursor-pointer w-full mt-3">
+                <button className="rounded-2xl bg-black/50 p-4 text-xl cursor-pointer w-full mt-3">
                     Connect Wallet
                 </button>
 
-                <div className="bg-black/40 rounded-3xl mt-2 overflow-hidden">
+                <div className="field-bg rounded-3xl mt-2 overflow-hidden">
                     <p className={`text-zinc-400 text-sm items-center justify-between cursor-pointer p-4 ${orderDetails ? 'hidden' : 'flex'}`} onClick={() => setOrderDetails(!orderDetails)}>
                         <span>1 SUI = 2.38 wUSDT</span>
                         <span><MdKeyboardArrowDown className="text-xl" /></span>

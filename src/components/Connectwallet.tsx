@@ -79,7 +79,7 @@ export default function ConnectWallet() {
   return (
     <>
       {!connected ?
-        <button className="bg-primary text-black text-sm py-1 px-3 rounded-4xl cursor-pointer font-bold" onClick={() => setWalletModal(!walletmodal)}>Connect Wallet</button>
+        <button className="btn-primary text-sm py-1 px-3 rounded-4xl cursor-pointer font-bold" onClick={() => setWalletModal(!walletmodal)}>Connect Wallet</button>
         :
         <>
           <button className="btn-bg text-primary text-sm py-1 px-3 rounded-xl cursor-pointer" >{balance} APT</button>

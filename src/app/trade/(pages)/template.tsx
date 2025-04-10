@@ -38,33 +38,41 @@ export default function TradeLayout({ children }: { children: React.ReactNode })
                                     <p className="rounded-2xl w-fit p-2 px-3 text-xs bg-color1 border border-black">Price Chart</p>
                                     <Chart />
                                 </div>
-
                                 <div className="p-6 btn-bg rounded-3xl mt-3 ">
                                     <Orders tabtoshow={activetab} />
                                 </div>
                             </div>
                         }
                     </div>
+                    {/* {
+                        proMode &&
+                        <div className="mt-3 relative z-50">
+                            <div className="p-6 btn-bg rounded-3xl mt-3 ">
+                                <Orders tabtoshow={activetab} />
+                            </div>
+                        </div>
+                    } */}
                 </div>
             </section>
             <Aurora
-                colorStops={["#1ea59a", "#FEBF32", "#2d82e4"]}
+                // colorStops={["#1ea59a", "#FEBF32", "#2d82e4"]}
+                colorStops={["#1ea59a", "#9EC8B9", "#2d82e4"]}
                 blend={0.5}
                 amplitude={1.0}
                 speed={0.7}
             />
             <Background />
 
-
+            {/* Bottom Fixed Menubar */}
             <div className="pro-bar z-50 fixed bottom-4 w-full ">
-                <div className="flex items-center gap-2 text-sm text-zinc-400 bg-black w-fit rounded-4xl p-2 md:p-4 m-auto relative">
+                <div className="flex items-center gap-2 text-sm text-zinc-400 field-bg w-fit rounded-4xl p-2 md:p-4 m-auto relative">
                     <div className="bg-white/6 hover:bg-white/20 rounded-2xl p-2 cursor-pointer" onClick={() => toggleDropdown("setting")}><IoSettingsOutline /></div>
                     <div className="h-4 border-r border-zinc-800"></div>
                     <div className="hidden px-2 md:flex items-center gap-2">
                         <label className="relative inline-flex items-center cursor-pointer">
                             <input type="checkbox" className="sr-only peer" checked={proMode} readOnly />
                             <div
-                                className="group peer btn-bg rounded-full duration-300 w-12 h-5 after:duration-300 after:bg-zinc-400 peer-checked:after:bg-yellow-500 after:rounded-full after:absolute after:h-3 after:w-3 after:top-1 after:left-1 after:flex after:justify-center after:items-center peer-checked:after:translate-x-7 peer-hover:after:scale-95" onClick={toggleProMode}></div>
+                                className="group peer card-bg rounded-full duration-300 w-12 h-5 after:duration-300 after:bg-zinc-400 peer-checked:after:bg-cyan-500 after:rounded-full after:absolute after:h-3 after:w-3 after:top-1 after:left-1 after:flex after:justify-center after:items-center peer-checked:after:translate-x-7 peer-hover:after:scale-95" onClick={toggleProMode}></div>
                         </label>
                         <span>Pro Mode</span>
                     </div>
@@ -80,7 +88,7 @@ export default function TradeLayout({ children }: { children: React.ReactNode })
                         </>
                     }
                     <div className="flex items-center gap-2 hover:bg-white/20 rounded-2xl py-2 px-4 cursor-pointer" onClick={() => toggleDropdown("more")}>
-                        <RiMenuUnfoldLine /><span className="hidden md:block">More</span>    
+                        <RiMenuUnfoldLine /><span className="hidden md:block">More</span>
                     </div>
                     {/* More */}
                     {visibleDropdown === "more" && (
