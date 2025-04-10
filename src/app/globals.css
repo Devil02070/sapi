@@ -1,6 +1,29 @@
 @import "tailwindcss";
 
 :root {
+  /* --background: #17161B;
+  --foreground: #ffffff;
+  --color1: #FEBF32;
+  --color2: #232532;
+  --card-bg: #23253250;
+  --field-bg: #00000060;
+  --modal-overlay-bg: #000000aa;
+  --black: #000000;
+  --text-black: #000000;
+  --text-white: #ffffff; */
+
+  --background: #092635;
+  --foreground: #ffffff;
+  --color1: #9EC8B9;
+  --color2: #001616;
+  --card-bg: #004949;
+  --field-bg: #001616;
+  --text-white: #000000;
+  --text-black: #ffffff;
+  --btn-bg: #9EC8B9;
+}
+
+[data-theme='light'] {
   --background: #17161B;
   --foreground: #ffffff;
   --color1: #FEBF32;
@@ -11,18 +34,6 @@
   --black: #000000;
   --text-black: #000000;
   --text-white: #ffffff;
-}
-
-[data-theme='light'] {
-  --background: #092635;
-  --foreground: #ffffff;
-  --color1: #9EC8B9;
-  --color2: #001616;
-  --card-bg: #004949;
-  --field-bg: #001616;
-  --text-white: #000000;
-  --text-black: #ffffff;
-  --btn-bg: #9EC8B9;
 }
 
 /* [data-theme='light'] {
