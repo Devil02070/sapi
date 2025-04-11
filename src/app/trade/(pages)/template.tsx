@@ -44,14 +44,6 @@ export default function TradeLayout({ children }: { children: React.ReactNode })
                             </div>
                         }
                     </div>
-                    {/* {
-                        proMode &&
-                        <div className="mt-3 relative z-50">
-                            <div className="p-6 btn-bg rounded-3xl mt-3 ">
-                                <Orders tabtoshow={activetab} />
-                            </div>
-                        </div>
-                    } */}
                 </div>
             </section>
             <Aurora
@@ -100,7 +92,7 @@ export default function TradeLayout({ children }: { children: React.ReactNode })
                         >
                             <h3 className="text-lg font-bold ms-1">More</h3>
                             <ul className="w-[150px] text-sm">
-                                <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => toggleDropdown("more")}>FeedBack</li>
+                                <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => showOrdersModal(3)}>History</li>
                                 <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => toggleDropdown("more")}>FeedBack</li>
                             </ul>
                         </motion.div>
@@ -117,8 +109,8 @@ export default function TradeLayout({ children }: { children: React.ReactNode })
                         >
                             <h3 className="text-lg font-bold ms-1">Settings</h3>
                             <ul className="w-[150px] text-sm">
-                                <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => toggleDropdown("more")}>----</li>
-                                <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => toggleDropdown("more")}>----</li>
+                                <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => toggleDropdown("setting")}>----</li>
+                                <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => toggleDropdown("setting")}>----</li>
                             </ul>
                         </motion.div>
                     )
@@ -129,7 +121,7 @@ export default function TradeLayout({ children }: { children: React.ReactNode })
 
             {/* Simple Mode Orders Modal */}
             {ordersModal && (
-                <div className="fixed top-0 right-0 left-0 bottom-0 z-60 flex py-20 pb-0 md:py-20 modal-bg orders justify-center" onClick={(e) => {
+                <div className="fixed top-0 right-0 left-0 bottom-0 z-60 flex py-40 pb-0 md:py-20 modal-bg orders justify-center" onClick={(e) => {
                     if (e.target === e.currentTarget) {
                         setOrdersModal(!ordersModal);
                     }

@@ -43,7 +43,7 @@ export default function Orders({ tabtoshow }: { tabtoshow: number }) {
                                 </thead>
                             </table>
 
-                            <div className="max-h-[80vh] md:max-h-[68vh] overflow-y-auto scrollbar">
+                            <div className="max-h-[60vh] md:max-h-[68vh] overflow-y-auto scrollbar">
                                 <table className="table w-max md:w-full">
                                 <thead className="block md:hidden">
                                     <tr className="grid grid-cols-12 gap-1">
@@ -56,7 +56,7 @@ export default function Orders({ tabtoshow }: { tabtoshow: number }) {
                                 </thead>
                                     <tbody>
                                         {
-                                            Array.from({ length: 50 }).map((item, _i) => {
+                                            Array.from({ length: 10 }).map((item, _i) => {
                                                 return (
                                                     <tr key={_i} className="grid grid-cols-12 gap-1">
                                                         <td className="col-span-2 bg-white/10 rounded-xl mt-1 md:mt-2 py-1 md:py-2 px-3 text-start text-zinc-400">Move</td>
@@ -80,8 +80,8 @@ export default function Orders({ tabtoshow }: { tabtoshow: number }) {
                 {
                     isActive == 2 &&
                     <div className="dca">
-                        <div className="overflow-hidden">
-                            <table className="table w-full">
+                       <div className="hidden md:block overflow-x-auto">
+                       <table className="table w-max md:w-full ">
                                 <thead className="">
                                     <tr className="grid grid-cols-12 gap-1">
                                         <th className="col-span-2 bg-color1 rounded-xl font-medium text-sm p-2 px-3 text-zinc-400 text-start">Coin</th>
@@ -103,8 +103,8 @@ export default function Orders({ tabtoshow }: { tabtoshow: number }) {
                 {
                     isActive == 3 &&
                     <div className="history">
-                        <div className="overflow-hidden">
-                            <table className="table w-full">
+                        <div className="hidden md:block overflow-x-auto">
+                        <table className="table w-max md:w-full ">
                                 <thead className="">
                                     <tr className="grid grid-cols-7 gap-1">
                                         <th className="bg-color1 rounded-xl font-medium text-sm p-2 px-3 text-zinc-400 text-start">Time</th>

@@ -14,16 +14,16 @@ export default function TradeTabs() {
     return (
         <>
             <div className="flex justify-between mb-4 relative">
-                <div className={`flex gap-2 btn-bg w-fit p-1 rounded-4xl relative z-50 `}>
+                <div className={`w-fit flex gap-2 btn-bg  p-1 rounded-4xl relative z-50 `}>
                     {
                         paths.map((path, index) => (
-                            <Link href={`/trade/${path.to}`} className={`tab text-primary py-1 px-5 text-sm rounded-4xl btn-bg hover-bg ${pathname === `/trade/${path.to}` ? "active" : ""}`} key={`trade-path-${index}`}>{path.name}</Link>
+                            <Link href={`/trade/${path.to}`} className={`tab text-primary py-1 px-3 md:px-5 text-sm rounded-4xl btn-bg hover-bg ${pathname === `/trade/${path.to}` ? "active" : ""}`} key={`trade-path-${index}`}>{path.name}</Link>
                         ))
                     }
                 </div>
-                <div className="btn-bg p-1 px-3 rounded-4xl flex items-center ms-auto gap-4">
-                    <span className="text-primary">0.5%</span>
-                    <IoSettingsOutline className="text-xl cursor-pointer hover-primary" onClick={() => setSlippagemodal(!slippagemodal)} />
+                <div className="btn-bg p-1 px-3 rounded-4xl flex items-center ms-auto gap-2 md:gap-4">
+                    <span className="text-sm text-primary">0.5%</span>
+                    <IoSettingsOutline className="text-sm md:text-xl cursor-pointer hover-primary" onClick={() => setSlippagemodal(!slippagemodal)} />
                 </div>
                 {
                     slippagemodal &&
@@ -31,7 +31,7 @@ export default function TradeTabs() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, ease: "ease" }}
-                        className="p-4 rounded-2xl btn-bg absolute w-fit z-60 border border-white/20 -right-20 top-10"
+                        className="p-4 rounded-2xl btn-bg absolute w-fit z-60 border border-white/20 right-0 md:-right-20 top-10"
                     >
                         <div className="title">
                             <h2 className="text-xl text-grad flex gap-2 items-center ">Transaction Setting <AiOutlineQuestionCircle className="text-zinc-400"/></h2>

@@ -1,29 +1,33 @@
 @import "tailwindcss";
 
 :root {
-  /* --background: #17161B;
-  --foreground: #ffffff;
-  --color1: #FEBF32;
-  --color2: #232532;
-  --card-bg: #23253250;
-  --field-bg: #00000060;
-  --modal-overlay-bg: #000000aa;
-  --black: #000000;
-  --text-black: #000000;
-  --text-white: #ffffff; */
-
   --background: #092635;
   --foreground: #ffffff;
   --color1: #9EC8B9;
   --color2: #001616;
   --card-bg: #004949;
   --field-bg: #001616;
-  --text-white: #000000;
-  --text-black: #ffffff;
+  --text-white: #ffffff;
+  --text-black: #000000;
   --btn-bg: #9EC8B9;
+  --modal-overlay-bg:#000000aa;
+  --text-color1:#9EC8B9;
 }
 
-[data-theme='light'] {
+[data-theme='aptos'] {
+  --background: #092635;
+  --foreground: #ffffff;
+  --color1: #9EC8B9;
+  --color2: #001616;
+  --card-bg: #004949;
+  --field-bg: #001616;
+  --text-white: #ffffff;
+  --text-black: #000000;
+  --btn-bg: #9EC8B9;
+  --text-color1:#9EC8B9;
+}
+
+[data-theme='movement'] {
   --background: #17161B;
   --foreground: #ffffff;
   --color1: #FEBF32;
@@ -32,26 +36,47 @@
   --field-bg: #00000060;
   --modal-overlay-bg: #000000aa;
   --black: #000000;
-  --text-black: #000000;
   --text-white: #ffffff;
+  --text-black: #000000;
+  --text-color1:#FEBF32;
 }
 
-/* [data-theme='light'] {
+[data-theme='supra'] {
   --background: #18230F;
   --foreground: #ffffff;
   --color1: #1F7D53;
   --color2: #254615;
   --card-bg:#252e21;
   --field-bg:#00140b;
-  --text-white:#000000;
-  --text-black:#ffffff;
+  --text-white:#ffffff;
+  --text-black:#000000;
   --btn-bg:#9EC8B9;
-} */
+  --text-color1:#1F7D53;
+}
+
+[data-theme='light'] {
+  --background: #C6E7FF;
+  --foreground: #000000;
+  --color1: #D4F6FF;
+  --color2: #FBFBFB;
+  --text-white:#ffffff;
+  --text-black:#000000;
+  --card-bg:#FAF1E6;
+  --field-bg:#FBFBFB;
+  --btn-bg:#9EC8B9;
+  --text-color1:#000000;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  transition:all 0.5s ease;
+}
 
 /* Buttons */
 .btn-primary{
   background-color:var(--color1);
-  color:var(--black);
+  color:var(--text-black);
   transition:all 0.5s ease
 }
 .btn-primary:hover{
@@ -59,64 +84,21 @@
   color:var(--white)
 }
 
-.field-bg {
-  background: Var(--field-bg);
-}
+.field-bg {background: Var(--field-bg);}
+.bg-dark {background-color: var(--background)}
+.bg-primary {background-color: var(--color1)}
+.btn-bg {background-color: var(--color2)}
+.card-bg {background-color: var(--card-bg);}
+.bg-color1 {background-color: var(--background);}
+.modal-bg {background-color: var(--modal-overlay-bg);}
+.modal-bg.orders {background-color: var(--modal-overlay-bg);}
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-}
-
-.bg-dark {
-  background-color: var(--background)
-}
-
-.bg-primary {
-  background-color: var(--color1)
-}
-
-
-.text-primary {
-  color: var(--color1)
-}
-
-.btn-bg {
-  background-color: var(--color2)
-}
-
-.card-bg {
-  background-color: var(--card-bg);
-}
-
-.bg-color1 {
-  background-color: var(--background);
-}
-
+.text-primary {color: var(--text-color1)}
 .text-grad {
   background: linear-gradient(to bottom right, #1ea59a, #d1d358, #2d82e4);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-.modal-bg {
-  backdrop-filter: unset;
-  background-color: var(--modal-overlay-bg);
-}
-
-.modal-bg.orders {
-  backdrop-filter: unset;
-  background-color: var(--modal-overlay-bg);
-}
-
-.scrollbar-hidden::-webkit-scrollbar {
-  display: none;
-}
-
-/* For Firefox */
-.scrollbar-hidden {
-  scrollbar-width: none;
 }
 
 .hover-bg:hover {
@@ -129,12 +111,13 @@ body {
   color: var(--color1);
   transition: all 0.5s ease;
 }
-
 .tab.active {
   background-color: var(--color1);
   color: var(--color-black);
 }
 
+.scrollbar-hidden::-webkit-scrollbar {display: none;}
+.scrollbar-hidden {scrollbar-width: none;}
 
 /* Background Tokens */
 .floating-tokens {
@@ -220,12 +203,12 @@ body {
 }
 
 .scrollbar::-webkit-scrollbar-thumb {
-  background: #febd32da;
+  background: var(--color1);
   border-radius: 16px;
 }
 
 .scrollbar::-webkit-scrollbar-thumb:hover {
-  background: #FEBF32;
+  background: var(--color1);
 }
 
 .scrollbar::-webkit-scrollbar-track {
@@ -239,7 +222,7 @@ body {
 
 .scrollbar {
   scrollbar-width: thin;
-  scrollbar-color: #febd32da #febd320c;
+  scrollbar-color: var(--color1) #febd320c;
 }
 
 .scrollbar * {
@@ -291,4 +274,19 @@ body {
   to {
     bottom: .1%
   }
+}
+
+
+/* Toast css */
+.Toastify__toast{
+  border-radius: 40px;
+}
+.Toastify__close-button{
+  top: 23px;
+  right: 16px;
+  color:var(--text-white)
+}
+.Toastify__toast-theme--dark{
+  background: linear-gradient(to bottom right, var(--field-bg));
+  color: var(--text-white);
 }
