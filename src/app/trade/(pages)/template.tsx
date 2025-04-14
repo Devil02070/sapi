@@ -92,7 +92,7 @@ export default function TradeLayout({ children }: { children: React.ReactNode })
                         >
                             <h3 className="text-lg font-bold ms-1">More</h3>
                             <ul className="w-[150px] text-sm">
-                                <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => showOrdersModal(3)}>History</li>
+                                <li className="md:hidden btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => showOrdersModal(3)}>History</li>
                                 <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => toggleDropdown("more")}>FeedBack</li>
                             </ul>
                         </motion.div>

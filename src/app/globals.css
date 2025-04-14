@@ -2,7 +2,7 @@
 
 :root {
   --background: #092635;
-  --foreground: #ffffff;
+  /* --foreground: #ffffff;
   --color1: #9EC8B9;
   --color2: #001616;
   --card-bg: #004949;
@@ -11,7 +11,24 @@
   --text-black: #000000;
   --btn-bg: #9EC8B9;
   --modal-overlay-bg:#000000aa;
-  --text-color1:#9EC8B9;
+  --text-color1:#9EC8B9; */
+}
+
+[data-theme='light'] {
+  --background: #C6E7FF;
+  --foreground: #000000;
+  --color1: #D4F6FF;
+  --color2: #FBFBFB;
+  --card-bg:#FAF1E6;
+  --field-bg:#FBFBFB;
+  --text-color1:#000000;
+  --toast-bg:#FAF1E6;
+  --toast-text:#000000;
+  --connect-hover:#00000050;
+  --modal-border:#00000020;
+  --modal-overlay-bg:#000000aa;
+  --modal-bg:#FAF1E6;
+  --btn-swap:#C6E7FF;
 }
 
 [data-theme='aptos'] {
@@ -21,10 +38,14 @@
   --color2: #001616;
   --card-bg: #004949;
   --field-bg: #001616;
-  --text-white: #ffffff;
-  --text-black: #000000;
-  --btn-bg: #9EC8B9;
   --text-color1:#9EC8B9;
+  --toast-bg:#001616;
+  --toast-text:#ffffff;
+  --connect-hover:#001616;
+  --modal-border:#ffffff20;
+  --modal-overlay-bg:#000000aa;
+  --modal-bg:#001616;
+  --btn-swap:#00000050
 }
 
 [data-theme='movement'] {
@@ -50,22 +71,11 @@
   --field-bg:#00140b;
   --text-white:#ffffff;
   --text-black:#000000;
-  --btn-bg:#9EC8B9;
   --text-color1:#1F7D53;
+  --btn-bg:#9EC8B9;
 }
 
-[data-theme='light'] {
-  --background: #C6E7FF;
-  --foreground: #000000;
-  --color1: #D4F6FF;
-  --color2: #FBFBFB;
-  --text-white:#ffffff;
-  --text-black:#000000;
-  --card-bg:#FAF1E6;
-  --field-bg:#FBFBFB;
-  --btn-bg:#9EC8B9;
-  --text-color1:#000000;
-}
+
 
 body {
   background: var(--background);
@@ -76,12 +86,16 @@ body {
 /* Buttons */
 .btn-primary{
   background-color:var(--color1);
-  color:var(--text-black);
-  transition:all 0.5s ease
+  transition:all 0.5s ease;
 }
 .btn-primary:hover{
-  background-color:var(--color2);
-  color:var(--white)
+  background-color:var(--connect-hover);
+}
+.btn-swap{
+  background-color: var(--btn-swap);
+}
+.btn-swap:hover{
+  background-color: var(--connect-hover);
 }
 
 .field-bg {background: Var(--field-bg);}
@@ -90,7 +104,7 @@ body {
 .btn-bg {background-color: var(--color2)}
 .card-bg {background-color: var(--card-bg);}
 .bg-color1 {background-color: var(--background);}
-.modal-bg {background-color: var(--modal-overlay-bg);}
+.modal-bg-backdrop {background-color: var(--modal-overlay-bg);}
 .modal-bg.orders {background-color: var(--modal-overlay-bg);}
 
 .text-primary {color: var(--text-color1)}
@@ -116,6 +130,15 @@ body {
   color: var(--color-black);
 }
 
+.modal-border{
+  border:1px solid var(--modal-border)
+}
+.modal-bg{background-color: var(--modal-bg);}
+.transition-all{transition:all 0.5s ease};
+
+
+/* ------------------------------------------------------------------------------------ */
+/* ------------------------------------------------------------------------------------ */
 .scrollbar-hidden::-webkit-scrollbar {display: none;}
 .scrollbar-hidden {scrollbar-width: none;}
 
@@ -284,9 +307,9 @@ body {
 .Toastify__close-button{
   top: 23px;
   right: 16px;
-  color:var(--text-white)
+  color:var(--toast-text)
 }
 .Toastify__toast-theme--dark{
-  background: linear-gradient(to bottom right, var(--field-bg));
-  color: var(--text-white);
+  background: linear-gradient(to bottom right, var(--toast-bg));
+  color: var(--toast-text);
 }

@@ -79,7 +79,7 @@ export default function ConnectWallet() {
   return (
     <>
       {!connected ?
-        <button className="btn-primary text-sm py-1 px-3 rounded-4xl cursor-pointer fomt-medium md:font-bold" onClick={() => setWalletModal(!walletmodal)}>Connect Wallet</button>
+        <button className="btn-primary text-black hover:text-white text-sm py-1 px-3 rounded-4xl cursor-pointer fomt-medium md:font-bold" onClick={() => setWalletModal(!walletmodal)}>Connect Wallet</button>
         :
         <>
           <button className="btn-bg text-primary text-sm py-1 px-3 rounded-xl cursor-pointer" >{balance} APT</button>
@@ -89,8 +89,12 @@ export default function ConnectWallet() {
       }
 
       {walletmodal && (
-        <div className="fixed top-0 right-0 left-0 bottom-0 z-60 flex items-center justify-center px-5 modal-bg">
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "ease" }} className="p-4 md:p-6 rounded-2xl btn-bg relative w-full md:w-[70%] lg:w-[50%] xl:w-[40%] 2xl:w-[25%]" >
+        <div className="fixed top-0 right-0 left-0 bottom-0 z-60 flex items-center justify-center px-5 modal-bg-backdrop" onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            setWalletModal(!walletmodal);
+          }
+        }}>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.5, ease: "ease" }} className="modal-bg p-4 md:p-6 rounded-2xl relative w-full md:w-[70%] lg:w-[50%] xl:w-[40%] 2xl:w-[25%] modal-border" >
             <div className="title">
               {
                 isloading ?
@@ -111,11 +115,11 @@ export default function ConnectWallet() {
                       <React.Fragment key={_i}>
                         {wallet.readyState === WalletReadyState.Installed
                           ?
-                          <li className="relative text-base p-3 text-center bg-black/30 rounded-xl hover:bg-zinc-400/10 flex gap-4 items-center cursor-pointer" onClick={() => connectWallet(wallet.name)}>
+                          <li className="relative text-base p-3 text-center bg-black/25 rounded-xl hover:bg-zinc-400/10 flex gap-4 items-center cursor-pointer transition-all" onClick={() => connectWallet(wallet.name)}>
                             <Image src={wallet.icon} alt="wallet-logo" height={300} width={300} className="h-[24px] w-[24px] rounded-full" />
                             <div className="text-start">
-                              <p className="text-zinc-200">{wallet.name}</p>
-                              <span className='absolute p-1 rounded text-[10px] text-zinc-400 right-3 top-3 btn-bg'>Detected</span>
+                              <p>{wallet.name}</p>
+                              <span className='absolute p-1 rounded text-[10px] right-3 top-3 btn-bg'>Detected</span>
                             </div>
                           </li>
                           :

@@ -6,7 +6,7 @@ import { LuArrowDownUp, LuWallet } from "react-icons/lu"
 import { MdKeyboardArrowDown } from "react-icons/md"
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState } from "react"
-import { IoIosSearch } from "react-icons/io"
+import { IoIosArrowUp, IoIosSearch } from "react-icons/io"
 import { tokens } from '@/utils/constant'
 import { useWallet } from "@aptos-labs/wallet-adapter-react"
 
@@ -18,6 +18,7 @@ export default function Body() {
     const [fromToken, setFromToken] = useState('MOVE')
     const [toToken, setToToken] = useState('')
     const [fromAmount, setFromAmount] = useState("");
+    const [swapDetails, setSwapDetails] = useState(false)
     const ShowTokensModal = (modaltype: string) => {
         if (modaltype == "from") {
             setcurrentfield('from')
@@ -47,7 +48,7 @@ export default function Body() {
                     <p className="text-zinc-400 text-sm">You pay</p>
                     <div className="input-group flex items-center">
                         <div className="w-1/2">
-                            <input type="text" placeholder="0.0" value={fromAmount} onChange={(e)=>setFromAmount(e.target.value)} className="py-2 text-3xl w-full focus:outline-none text-grad" />
+                            <input type="text" placeholder="0.0" value={fromAmount} onChange={(e) => setFromAmount(e.target.value)} className="py-2 text-3xl w-full focus:outline-none text-grad" />
                         </div>
                         <div className="flex gap-2 justify-end w-1/2">
                             <button className="px-1 md:px-3 text-sm md:text-base rounded text-primary cursor-pointer hover:opacity-70">max</button>
@@ -90,21 +91,53 @@ export default function Body() {
 
                 {
                     connected ?
-                        <button className="rounded-3xl bg-black/50 p-3 md:p-4 text-base md:text-xl cursor-pointer w-full mt-3">Swap</button>
+                        <button className="rounded-3xl btn-swap p-3 md:p-4 text-base md:text-xl cursor-pointer w-full mt-3 transition-all">Swap</button>
                         :
-                        <button className="rounded-3xl bg-black/50 p-3 md:p-4 text-base md:text-xl cursor-pointer w-full mt-3">Connect Wallet</button>
+                        <button className="rounded-3xl btn-swap p-3 md:p-4 text-base md:text-xl cursor-pointer w-full mt-3 transition-all">Connect Wallet</button>
                 }
+
+                <div className="field-bg rounded-3xl mt-2 overflow-hidden">
+                    <p className={`text-zinc-400 text-sm items-center justify-between cursor-pointer p-4 ${swapDetails ? 'hidden' : 'flex'}`} onClick={() => setSwapDetails(!swapDetails)}>
+                        <span>1 MOVE = 0.3013 USDT</span>
+                        <span><MdKeyboardArrowDown className="text-xl" /></span>
+                    </p>
+                    <div className={`${swapDetails ? '' : 'hidden'} p-4`}>
+                        <h4 className="flex items-center justify-between cursor-pointer" onClick={() => setSwapDetails(!swapDetails)}>
+                            <span>Order Details</span> <IoIosArrowUp />
+                        </h4>
+                        <div className="bg-black/80 py-5 px-3 rounded-xl mt-3">
+                            <p className="text-zinc-400 text-sm flex items-center justify-between">
+                                <span>Price</span>
+                                <span>1 MOVE = 0.3013 USDT</span>
+                            </p>
+                            <p className="text-zinc-400 text-sm flex items-center justify-between pt-3">
+                                <span>Swap Order</span>
+                                <span>50 Move</span>
+                            </p>
+                            <p className="text-zinc-400 text-sm flex items-center justify-between pt-3">
+                                <span>To Buy</span>
+                                <span>16.65 USDT</span>
+                            </p>
+                        </div>
+                        <div className="bg-black/80 py-5 px-3 rounded-xl mt-3">
+                            <p className="text-zinc-400 text-sm flex items-center justify-between pt-3">
+                                <span>Platform Fee</span>
+                                <span>0.2%</span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             {/* Tokens Modals */}
             <AnimatePresence>
                 {isOpen && (
-                    <div className="fixed top-0 right-0 left-0 bottom-0 z-60 flex items-center justify-center px-5 modal-bg">
+                    <div className="fixed top-0 right-0 left-0 bottom-0 z-60 flex items-center justify-center px-5 modal-bg-backdrop">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, ease: "ease" }}
-                            className="p-4 md:p-6 rounded-2xl btn-bg relative w-full md:w-[70%] lg:w-[50%] xl:w-[30%] 2xl:w-[25%] border border-zinc-700"
+                            className="p-4 md:p-6 rounded-2xl relative w-full md:w-[70%] lg:w-[50%] xl:w-[30%] 2xl:w-[25%] border modal-border modal-bg"
                         >
                             <div className="title">
                                 <h2 className="text-2xl lg:text-3xl text-center text-grad">Select Token</h2>
@@ -112,22 +145,22 @@ export default function Body() {
                             <div className="content mt-6">
                                 <div className="search flex items-center relative px-2 md:px-0">
                                     <IoIosSearch className="absolute left-5 md:left-4 text-primary text-xl" />
-                                    <input type="search" placeholder="Search name or paste address" className="w-full border rounded-3xl border-zinc-700 p-4 py-3 md:py-3 ps-11 md:ps-13 text-sm focus:outline-none" />
+                                    <input type="search" placeholder="Search name or paste address" className="w-full rounded-3xl modal-border p-4 py-3 md:py-3 ps-11 md:ps-13 text-sm focus:outline-none" />
                                 </div>
                                 <ul className="max-h-[50vh] overflow-auto mt-4 flex flex-col gap-1 scrollbar">
                                     {
                                         tokens.map((item, _i) => {
                                             return (
-                                                <li key={_i} className="text-base md:text-lg p-2 field-bg flex gap-4 items-center justify-between cursor-pointer border-b border-white/4" onClick={() => selectToken(`${item.name}`)}>
+                                                <li key={_i} className="text-base md:text-lg p-2 flex gap-4 items-center justify-between cursor-pointer border-b border-white/4 hover:bg-black/10 rounded transition-all" onClick={() => selectToken(`${item.name}`)}>
                                                     <div className="flex items-center gap-4">
                                                         <Image src={item.token_image} alt="wallet-logo" height={300} width={300} className="h-7 md:h-8 w-7 md:w-8 rounded-full" />
                                                         <div className="text-start">
-                                                            <p className="text-zinc-200 text-sm">{item.name}</p>
+                                                            <p className="text-sm">{item.name}</p>
                                                             <p className="text-[10px] text-zinc-400">{item.full_name}</p>
                                                         </div>
                                                     </div>
-                                                    <div className="text-xs text-zinc-400 text-end">
-                                                        <p className="text-xs text-zinc-300"> {item.balance}</p>
+                                                    <div className="text-end">
+                                                        <p className="text-xs"> {item.balance}</p>
                                                         <p className="text-[10px] text-zinc-400 pt-1"> ~234.00 $</p>
                                                     </div>
                                                 </li>
