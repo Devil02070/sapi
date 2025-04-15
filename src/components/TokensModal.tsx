@@ -1,24 +1,24 @@
 'use client'
 import { tokens } from '@/utils/constant'
-import {AnimatePresence, motion} from 'framer-motion'
+import { AnimatePresence, motion } from 'framer-motion'
 import Image from 'next/image'
 import { IoIosSearch } from 'react-icons/io'
 interface TokensModalProps {
     isOpen: boolean;
     setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
-    selectToken: (token: { name: string, full_name:string, token_image: string, balance: number } ) => void;
-  }
-export default function TokensModal({isOpen, setIsOpen, selectToken}: TokensModalProps){
-    return(
+    selectToken: (token: { name: string, full_name: string, token_image: string, balance: number }) => void;
+}
+export default function TokensModal({ isOpen, setIsOpen, selectToken }: TokensModalProps) {
+    return (
         <>
-        <AnimatePresence>
+            <AnimatePresence>
                 {isOpen && (
-                    <div className="fixed top-0 right-0 left-0 bottom-0 z-60 flex items-center justify-center px-5 modal-bg-backdrop">
+                    <div className="fixed top-0 right-0 left-0 bottom-0 z-60 flex items-end md:items-center justify-center px-0 md:px-5 modal-bg-backdrop">
                         <motion.div
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, ease: "ease" }}
-                            className="p-4 md:p-6 rounded-2xl relative w-full md:w-[70%] lg:w-[50%] xl:w-[30%] 2xl:w-[25%] border modal-border modal-bg"
+                            className="p-4 md:p-6 rounded-t-2xl md:rounded-2xl relative w-full md:w-[70%] lg:w-[50%] xl:w-[30%] 2xl:w-[25%] border modal-border modal-bg"
                         >
                             <div className="title">
                                 <h2 className="text-2xl lg:text-3xl text-center text-grad">Select Token</h2>
@@ -28,7 +28,7 @@ export default function TokensModal({isOpen, setIsOpen, selectToken}: TokensModa
                                     <IoIosSearch className="absolute left-5 md:left-4 text-primary text-xl" />
                                     <input type="search" placeholder="Search name or paste address" className="w-full rounded-3xl modal-border p-4 py-3 md:py-3 ps-11 md:ps-13 text-sm focus:outline-none" />
                                 </div>
-                                <ul className="max-h-[50vh] overflow-auto mt-4 flex flex-col gap-1 scrollbar">
+                                <ul className="max-h-[60vh] md:max-h-[50vh] overflow-auto mt-4 flex flex-col gap-1 scrollbar">
                                     {
                                         tokens.map((item, _i) => {
                                             return (

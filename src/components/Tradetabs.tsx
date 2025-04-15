@@ -13,7 +13,7 @@ export default function TradeTabs() {
     const [slippagemodal, setSlippagemodal] = useState(false);
     return (
         <>
-            <div className="flex justify-between mb-4 relative">
+            <div className="flex justify-between mb-4 md:relative">
                 <div className={`w-fit flex gap-2 btn-bg  p-1 rounded-4xl relative z-50 `}>
                     {
                         paths.map((path, index) => (
@@ -37,7 +37,8 @@ export default function TradeTabs() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ duration: 0.5, ease: "ease" }}
-                        className="p-4 rounded-2xl btn-bg absolute w-fit z-60 border border-white/20 right-0 md:-right-20 top-10"
+                        // className="p-4 rounded-2xl btn-bg absolute w-fit z-60 right-0 md:-right-20 top-10 modal-border"
+                        className="p-4 rounded-t-2xl md:rounded-2xl btn-bg fixed md:absolute w-fit z-60 right-0 bottom-0 md:-right-20 md:-bottom-40 modal-border"
                     >
                         <div className="title relative group w-fit">
                             <h2 className="text-xl text-grad flex gap-2 items-center">Transaction Setting
@@ -58,7 +59,7 @@ export default function TradeTabs() {
                                 <span className="py-2 px-4 rounded-3xl text-sm bg-dark text-primary hover-bg cursor-pointer">0.1%</span>
                                 <span className="py-2 px-4 rounded-3xl text-sm bg-dark text-primary hover-bg cursor-pointer">0.5%</span>
                                 <span className="py-2 px-4 rounded-3xl text-sm bg-dark text-primary hover-bg cursor-pointer">1.0%</span>
-                                <input type="text" placeholder="custom (0.08%)" className="w-full border border-white/20 rounded-xl p-3 text-sm focus:outline-none" />
+                                <input type="text" placeholder="custom (0.08%)" className="w-full modal-border rounded-xl p-3 text-sm focus:outline-none" />
                             </div>
                         </div>
                         {/* <button onClick={() => setSlippagemodal(!slippagemodal)} className="absolute top-5 right-5 cursor-pointer text-3xl"><IoCloseOutline /></button> */}
