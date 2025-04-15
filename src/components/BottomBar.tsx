@@ -104,7 +104,8 @@ export default function BottomBar() {
                         <div className="p-4 md:p-8 btn-bg rounded-3xl mt-3 h-full border border-zinc-700 overflow-hidden">
                             <Orders tabtoshow={activetab} />
                         </div>
-                        <button onClick={() => setOrdersModal(!ordersModal)} className="md:hidden absolute top-6 right-5 cursor-pointer text-3xl bg-zinc-700 rounded-lg"><IoCloseOutline /></button>
+                        {/* <button onClick={() => setOrdersModal(!ordersModal)} className="md:hidden absolute top-6 right-5 cursor-pointer text-3xl bg-zinc-700 rounded-lg"><IoCloseOutline /></button> */}
+                        <button onClick={() => setOrdersModal(!ordersModal)} className="md:hidden absolute top-5 right-5 cursor-pointer text-sm bg-dark p-1 rounded px-2">Esc</button>
                     </motion.div>
                 </div>
             )}
