@@ -37,7 +37,6 @@ export default function Body() {
     }
     return (
         <>
-
             <div className="w-full card-bg rounded-3xl p-1 relative z-50">
                 <div className="field-bg px-5 py-6 rounded-3xl border border-transparent hover:border-white/20">
                     <p className="text-zinc-400 text-sm">You pay</p>
@@ -64,7 +63,6 @@ export default function Body() {
                             <input type="text" placeholder="0.0" className="py-2 text-3xl w-full focus:outline-none text-grad" />
                         </div>
                         <div className="flex gap-2 justify-end w-[50%]">
-
                             {
                                 toToken == '' ?
                                     <button className="rounded-4xl py-2 px-3 text-xs md:text-sm cursor-pointer bg-primary text-black" onClick={() => ShowTokensModal('to')}>
@@ -132,9 +130,7 @@ export default function Body() {
                     </div>
                 </div>
 
-                <button className="rounded-2xl bg-black/50 p-4 text-xl cursor-pointer w-full mt-3">
-                    Connect Wallet
-                </button>
+                <button className="rounded-2xl bg-black/50 p-4 text-xl w-full mt-3 cursor-pointer opacity-50">Comming Soon</button>
 
                 <div className="field-bg rounded-3xl mt-2 overflow-hidden">
                     <p className={`text-zinc-400 text-sm items-center justify-between cursor-pointer p-4 ${orderDetails ? 'hidden' : 'flex'}`} onClick={() => setOrderDetails(!orderDetails)}>

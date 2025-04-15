@@ -79,7 +79,7 @@ export default function ConnectWallet() {
   return (
     <>
       {!connected ?
-        <button className="btn-primary text-black hover:text-white text-sm py-1 px-3 rounded-4xl cursor-pointer fomt-medium md:font-bold" onClick={() => setWalletModal(!walletmodal)}>Connect Wallet</button>
+        <button className="btn-primary text-black hover:text-white text-sm py-1 px-3 rounded-4xl cursor-pointer" onClick={() => setWalletModal(!walletmodal)}>Connect Wallet</button>
         :
         <>
           <button className="btn-bg text-primary text-sm py-1 px-3 rounded-xl cursor-pointer" >{balance} APT</button>
@@ -137,8 +137,7 @@ export default function ConnectWallet() {
                   </ul>
               }
             </div>
-            <button onClick={() => setWalletModal(!walletmodal)} className="absolute top-4 md:top-5 right-4 md:right-5 cursor-pointer text-3xl hover:bg-zinc-700 rounded hover-primary"><IoCloseOutline />
-            </button>
+            <button onClick={() => setWalletModal(!walletmodal)} className="absolute top-4 md:top-5 right-4 md:right-5 cursor-pointer text-3xl hover:bg-zinc-700 rounded hover-primary"><IoCloseOutline /></button>
           </motion.div >
         </div >
       )

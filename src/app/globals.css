@@ -2,16 +2,19 @@
 
 :root {
   --background: #092635;
-  /* --foreground: #ffffff;
+  --foreground: #ffffff;
   --color1: #9EC8B9;
   --color2: #001616;
   --card-bg: #004949;
   --field-bg: #001616;
-  --text-white: #ffffff;
-  --text-black: #000000;
-  --btn-bg: #9EC8B9;
+  --text-color1:#9EC8B9;
+  --toast-bg:#001616;
+  --toast-text:#ffffff;
+  --connect-hover:#001616;
+  --modal-border:#ffffff20;
   --modal-overlay-bg:#000000aa;
-  --text-color1:#9EC8B9; */
+  --modal-bg:#001616;
+  --btn-swap:#00000050
 }
 
 [data-theme='light'] {
@@ -109,7 +112,8 @@ body {
 
 .text-primary {color: var(--text-color1)}
 .text-grad {
-  background: linear-gradient(to bottom right, #1ea59a, #d1d358, #2d82e4);
+  /* background: linear-gradient(to bottom right, #1ea59a, #d1d358, #2d82e4); */
+  background: linear-gradient(to bottom right, #1ea59a, #ffffff);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -312,4 +316,21 @@ body {
 .Toastify__toast-theme--dark{
   background: linear-gradient(to bottom right, var(--toast-bg));
   color: var(--toast-text);
+}
+
+/* Field Loading */
+
+.fieldloader {
+  width: 10px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+  margin-left:20px;
+  margin-top:10px
+}
+@keyframes l5 {
+    0%  {box-shadow: 20px 0 var(--background), -20px 0 var(--card-bg);background: var(--background) }
+    33% {box-shadow: 20px 0 var(--background), -20px 0 var(--card-bg);background: var(--card-bg)}
+    66% {box-shadow: 20px 0 var(--card-bg),-20px 0 var(--background); background: var(--card-bg)}
+    100%{box-shadow: 20px 0 var(--card-bg),-20px 0 var(--background); background: var(--background) }
 }
