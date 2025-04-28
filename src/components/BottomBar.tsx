@@ -2,22 +2,27 @@
 
 import { useState } from "react";
 import { AnimatePresence, motion } from 'framer-motion'
-import { IoCloseOutline, IoSettingsOutline } from "react-icons/io5";
+import { IoSettingsOutline } from "react-icons/io5";
 import { RiMenuUnfoldLine } from "react-icons/ri";
 import Orders from "./Orders";
 import { useProMode } from "@/utils/promode";
+import RoutingModal from "./RoutingModal";
 
 export default function BottomBar() {
     const { proMode, toggleProMode } = useProMode();
     const [activetab, setActiveTab] = useState(1)
     const [ordersModal, setOrdersModal] = useState(false)
     const [visibleDropdown, setVisibleDropdown] = useState<null | string>(null);
+    const [routingModal, setRoutingModal] = useState(false)
     const toggleDropdown = (dropdown: string) => {
         setVisibleDropdown((prev) => (prev === dropdown ? null : dropdown));
     };
     const showOrdersModal = (tab: number) => {
         setOrdersModal(!ordersModal)
         setActiveTab(tab)
+    }
+    const handleCloseModal = () => {
+        setRoutingModal(false)
     }
     return (
         <>
@@ -55,12 +60,19 @@ export default function BottomBar() {
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.2, ease: "easeInOut" }}
-                                className="dropdown p-2 border border-zinc-700/50 rounded-xl bg-black absolute right-0 bottom-14 md:bottom-18 z-50"
+                                // className="dropdown p-2 border border-zinc-700/50 rounded-xl bg-black absolute right-0 bottom-14 md:bottom-18 z-50"
+                                className="dropdown p-5 rounded-xl bg-black absolute right-0 bottom-14 md:bottom-18 z-50"
                             >
-                                <h3 className="text-lg font-bold ms-1">More</h3>
-                                <ul className="w-[150px] text-sm">
+                                <div className="flex justify-between relative pb-2 border-b border-zinc-700/50 ">
+                                    <h3 className="text-lg font-bold ms-1">More</h3>
+                                    <button onClick={() => toggleDropdown("More")} className="absolute right-0 cursor-pointer text-sm bg-dark p-1 rounded px-2">Esc</button>
+                                </div>
+                                <ul className="w-[250px] text-sm pt-4">
                                     <li className="md:hidden btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => showOrdersModal(3)}>History</li>
                                     <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => toggleDropdown("more")}>FeedBack</li>
+                                    <li className="btn-bg rounded-xl py-2 px-3 mt-2 opacity-50" onClick={() => toggleDropdown("setting")}>comming soon!</li>
+                                    <li className="btn-bg rounded-xl py-2 px-3 mt-2 opacity-50" onClick={() => toggleDropdown("setting")}>comming soon!</li>
+                                    <li className="btn-bg rounded-xl py-2 px-3 mt-2 opacity-50" onClick={() => toggleDropdown("setting")}>comming soon!</li>
                                 </ul>
                             </motion.div>
                         )}
@@ -74,18 +86,30 @@ export default function BottomBar() {
                                 animate={{ height: "auto", opacity: 1 }}
                                 exit={{ height: 0, opacity: 0 }}
                                 transition={{ duration: 0.2, ease: "easeInOut" }}
-                                className="dropdown p-2 border border-zinc-700/50 rounded-xl bg-black absolute left-0 bottom-14 md:bottom-18 z-50"
+                                // className="dropdown p-2 border border-zinc-700/50 rounded-xl bg-black absolute left-0 bottom-14 md:bottom-18 z-50"
+                                className="dropdown p-5 rounded-xl bg-black absolute left-0 bottom-14 md:bottom-18 z-50"
                             >
-                                <h3 className="text-lg font-bold ms-1">Settings</h3>
-                                <ul className="w-[150px] text-sm">
-                                    <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => toggleDropdown("setting")}>----</li>
-                                    <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => toggleDropdown("setting")}>----</li>
+                                <div className="flex justify-between relative pb-2 border-b border-zinc-700/50 ">
+                                    <h3 className="text-lg font-bold ms-1">Settings</h3>
+                                    <button onClick={() => toggleDropdown("setting")} className="absolute right-0 cursor-pointer text-sm bg-dark p-1 rounded px-2">Esc</button>
+                                </div>
+                                <ul className="w-[250px] text-sm pt-4">
+                                    <p className="">Liquidity Sources</p>
+                                    <li className="btn-bg rounded-xl py-2 px-3 hover:opacity-90 mt-2 cursor-pointer" onClick={() => setRoutingModal(true)}>Customized Routing <span className="text-primary">- OFF</span></li>
+                                    <p className="pt-5">Other</p>
+                                    <li className="btn-bg rounded-xl py-2 px-3 mt-2 opacity-50" onClick={() => toggleDropdown("setting")}>comming soon!</li>
+                                    <li className="btn-bg rounded-xl py-2 px-3 mt-2 opacity-50" onClick={() => toggleDropdown("setting")}>comming soon!</li>
+                                    <li className="btn-bg rounded-xl py-2 px-3 mt-2 opacity-50" onClick={() => toggleDropdown("setting")}>comming soon!</li>
                                 </ul>
                             </motion.div>
                         )}
                     </AnimatePresence>
                 </div>
             </div>
+
+            {/* Customized Routing Modal */}
+            <RoutingModal isOpen={routingModal} onClose={handleCloseModal} />
+
 
 
             {/* Simple Mode Orders Modal */}
@@ -104,7 +128,6 @@ export default function BottomBar() {
                         <div className="p-4 md:p-8 btn-bg rounded-3xl mt-3 h-full border border-zinc-700 overflow-hidden">
                             <Orders tabtoshow={activetab} />
                         </div>
-                        {/* <button onClick={() => setOrdersModal(!ordersModal)} className="md:hidden absolute top-6 right-5 cursor-pointer text-3xl bg-zinc-700 rounded-lg"><IoCloseOutline /></button> */}
                         <button onClick={() => setOrdersModal(!ordersModal)} className="md:hidden absolute top-5 right-5 cursor-pointer text-sm bg-dark p-1 rounded px-2">Esc</button>
                     </motion.div>
                 </div>
