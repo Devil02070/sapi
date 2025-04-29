@@ -318,8 +318,7 @@ body {
   color: var(--toast-text);
 }
 
-/* Field Loading */
-
+/* Input Field Loading */
 .fieldloader {
   width: 10px;
   aspect-ratio: 1;
@@ -333,4 +332,38 @@ body {
     33% {box-shadow: 20px 0 var(--background), -20px 0 var(--card-bg);background: var(--card-bg)}
     66% {box-shadow: 20px 0 var(--card-bg),-20px 0 var(--background); background: var(--card-bg)}
     100%{box-shadow: 20px 0 var(--card-bg),-20px 0 var(--background); background: var(--background) }
+}
+
+/* Swap processing animation */
+.processing-loader {
+  width: 50px;
+  margin: auto;
+  aspect-ratio: 1;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  /* border-color: #ccc #0000; */
+  border-color: var(--text-color1) #0000;
+  animation: l16 1s infinite linear;
+}
+.processing-loader::before,
+.processing-loader::after {    
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+}
+.processing-loader::before {
+  /* border-color: #f03355 #0000; */
+  border-color: var(--color1) #0000;
+  animation: inherit; 
+  animation-duration: .5s;
+  animation-direction: reverse;
+}
+.processing-loader::after {
+  margin: 8px;
+}
+@keyframes l16 { 
+  100%{transform: rotate(1turn)}
 }

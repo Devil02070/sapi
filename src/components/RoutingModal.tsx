@@ -4,7 +4,7 @@ import Image from 'next/image'
 type ModalProps = {
     isOpen: boolean;
     onClose: () => void;
-  };
+};
 export default function RoutingModal({ isOpen, onClose }: ModalProps) {
     if (!isOpen) return null;
     return (
@@ -30,7 +30,8 @@ export default function RoutingModal({ isOpen, onClose }: ModalProps) {
                         </div>
                         <div className="content mt-6">
                             <p>Dexes</p>
-                            <ul className="mt-4 flex flex-wrap gap-2">
+                            {/* <ul className="mt-4 flex flex-wrap gap-2"> */}
+                            <ul className="max-h-[20vh] md:max-h-[40vh] overflow-auto mt-4 flex flex-wrap gap-1 md:gap-2 scrollbar">
                                 {
                                     Array.from({ length: 5 }).map((item, _i) => {
                                         return (
@@ -54,7 +55,8 @@ export default function RoutingModal({ isOpen, onClose }: ModalProps) {
                             </ul>
 
                             <p className="mt-6">Others</p>
-                            <ul className="mt-4 flex flex-wrap gap-2">
+                            {/* <ul className="mt-4 flex flex-wrap gap-2"> */}
+                            <ul className="max-h-[20vh] md:max-h-[40vh] overflow-auto mt-4 flex flex-wrap gap-1 md:gap-2 scrollbar">
                                 {
                                     Array.from({ length: 5 }).map((item, _i) => {
                                         return (

@@ -6,6 +6,7 @@ import { useEffect, useState } from "react"
 import { useWallet } from "@aptos-labs/wallet-adapter-react"
 import OrderDetails from "@/components/OrderDetails"
 import TokensModal from "@/components/TokensModal"
+import ConfirmSwap from "./ConfirmSwap"
 
 interface Token {
     name: string;
@@ -25,6 +26,7 @@ export default function Body() {
     const [toAmount, setToAmount] = useState("");
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
+    const [confirmModal, setConfirmModal] = useState(false)
 
     // Order Details -->
     const currentPrice = fromToken && toToken ? `1 ${fromToken.name} = 4.95 ${toToken.name}` : '';
@@ -62,6 +64,9 @@ export default function Body() {
             setFromAmount(maxAmount);
         }
     };
+    const closeConfirmModal = () => {
+        setConfirmModal(false)
+    }
     useEffect(() => {
         if (
             fromAmount &&
@@ -133,7 +138,7 @@ export default function Body() {
                         <div className="w-1/2">
                             {
                                 loading ?
-                                   <div className="fieldloader"></div>
+                                    <div className="fieldloader"></div>
                                     :
                                     <input
                                         type="text"
@@ -167,7 +172,7 @@ export default function Body() {
                 </div>
 
                 {connected ?
-                    <button className="rounded-3xl btn-swap p-3 md:p-4 text-base md:text-xl cursor-pointer w-full mt-3 transition-all">Swap</button>
+                    <button className="rounded-3xl btn-swap p-3 md:p-4 text-base md:text-xl cursor-pointer w-full mt-3 transition-all" onClick={() => setConfirmModal(true)}>Swap</button>
                     :
                     <button className="rounded-3xl btn-swap p-3 md:p-4 text-base md:text-xl cursor-pointer w-full mt-3 transition-all">Connect Wallet</button>
                 }
@@ -186,6 +191,16 @@ export default function Body() {
                 isOpen={isOpen}
                 setIsOpen={setIsOpen}
                 selectToken={selectToken}
+            />
+
+            {/* Confirm Swap Modal */}
+            <ConfirmSwap
+                CurrentPrice={currentPrice}
+                SwapOrder={swapOrder}
+                ToBuy={toBuy}
+                isOpen={confirmModal}
+                onClose={closeConfirmModal}
+
             />
         </>
     )
